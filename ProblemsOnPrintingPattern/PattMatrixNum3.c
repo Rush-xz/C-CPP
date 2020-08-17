@@ -2,11 +2,11 @@
 //
 //      Accept number of rows and number of columns from user and display
 //      below pattern.
-//      Input : iRow = 4 iCol = 3
-//      Output : * * *
-//               * * *
-//               * * *
-//               * * *
+//      Input : iRow = 3 iCol = 4
+//      Output : 1 1 1 1
+//               2 2 2 2
+//               3 3 3 3
+//               4 4 4 4
 //
 ///////////////////////////////////////////////////////////////////////
 
@@ -37,12 +37,12 @@ void Pattern( int iRow , int iCol)
 {
     int  i = 0 , j=0;
 
-    if( iRow < 0)       //updater
+    if( iRow < 0)       //Filter
     {
         iRow = -iCol;
     }
 
-    if( iCol < 0)        //updater
+    if( iCol < 0)
     {
         iCol = -iCol;
     }
@@ -52,7 +52,7 @@ void Pattern( int iRow , int iCol)
 
         for( j=1; j<=iCol; j++)
         {
-            printf("*\t");
+            printf("%d\t",i);
         }
 
         printf("\n");
@@ -63,22 +63,15 @@ void Pattern( int iRow , int iCol)
 /*  Output :
  
 Enter Number of Rows :
-4
-Enter Number of Columns :
-3
-*       *       *
-*       *       *
-*       *       *
-*       *       *
-
-Enter Number of Rows :
-5
-Enter Number of Columns :
 6
-*       *       *       *       *       *
-*       *       *       *       *       *
-*       *       *       *       *       *
-*       *       *       *       *       *
-*       *       *       *       *       *
+Enter Number of Columns :
+4
+1       1       1       1
+2       2       2       2
+3       3       3       3
+4       4       4       4
+5       5       5       5
+6       6       6       6
+
 
 */

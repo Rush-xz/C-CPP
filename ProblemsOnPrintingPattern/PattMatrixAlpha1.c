@@ -1,12 +1,12 @@
 ///////////////////////////////////////////////////////////////////////
 //
-//      Accept number of rows and number of columns from user and display
-//      below pattern.
-//      Input : iRow = 4 iCol = 3
-//      Output : * * *
-//               * * *
-//               * * *
-//               * * *
+//      Accept number of rows and number of columns from user and display below
+//      pattern.
+//      Input : iRow = 4 iCol = 4
+//      Output : A B C D
+//               A B C D
+//               A B C D
+//               A B C D
 //
 ///////////////////////////////////////////////////////////////////////
 
@@ -36,25 +36,27 @@ int main()
 void Pattern( int iRow , int iCol)
 {
     int  i = 0 , j=0;
+    char cAlpha = 'A';
 
     if( iRow < 0)       //updater
     {
         iRow = -iCol;
     }
 
-    if( iCol < 0)        //updater
-    {
+    if( iCol < 0)       //updater
+    {   
         iCol = -iCol;
     }
 
     for( i=1; i<=iRow; i++)
     {
 
-        for( j=1; j<=iCol; j++)
+        for( j=1; j<=iCol; j++ , cAlpha++)
         {
-            printf("*\t");
+            printf("%c\t",cAlpha);
         }
 
+        cAlpha = 'A';
         printf("\n");
     }
     
@@ -63,22 +65,14 @@ void Pattern( int iRow , int iCol)
 /*  Output :
  
 Enter Number of Rows :
-4
-Enter Number of Columns :
-3
-*       *       *
-*       *       *
-*       *       *
-*       *       *
-
-Enter Number of Rows :
 5
 Enter Number of Columns :
-6
-*       *       *       *       *       *
-*       *       *       *       *       *
-*       *       *       *       *       *
-*       *       *       *       *       *
-*       *       *       *       *       *
+4
+A       B       C       D
+A       B       C       D
+A       B       C       D
+A       B       C       D
+A       B       C       D
+
 
 */

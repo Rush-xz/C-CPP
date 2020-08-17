@@ -2,12 +2,10 @@
 //
 //      Accept number of rows and number of columns from user and display
 //      below pattern.
-//      Input : iRow = 4 iCol = 3
-//      Output : * * *
-//               * * *
-//               * * *
-//               * * *
-//
+//      Input : iRow = 3 iCol = 4
+//      Output : * # * #
+//               * # * #
+//               * # * #
 ///////////////////////////////////////////////////////////////////////
 
 //Header File
@@ -42,7 +40,7 @@ void Pattern( int iRow , int iCol)
         iRow = -iCol;
     }
 
-    if( iCol < 0)        //updater
+    if( iCol < 0)       //updater
     {
         iCol = -iCol;
     }
@@ -52,7 +50,16 @@ void Pattern( int iRow , int iCol)
 
         for( j=1; j<=iCol; j++)
         {
-            printf("*\t");
+
+            if( ( j%2 )==0 )
+            {
+                printf("#\t");
+            }
+            else
+            {
+                printf("*\t");
+            }
+
         }
 
         printf("\n");
@@ -63,22 +70,13 @@ void Pattern( int iRow , int iCol)
 /*  Output :
  
 Enter Number of Rows :
-4
-Enter Number of Columns :
-3
-*       *       *
-*       *       *
-*       *       *
-*       *       *
-
-Enter Number of Rows :
 5
 Enter Number of Columns :
-6
-*       *       *       *       *       *
-*       *       *       *       *       *
-*       *       *       *       *       *
-*       *       *       *       *       *
-*       *       *       *       *       *
+5
+*       #       *       #       *
+*       #       *       #       *
+*       #       *       #       *
+*       #       *       #       *
+*       #       *       #       *
 
 */

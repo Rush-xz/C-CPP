@@ -30,7 +30,7 @@ void Pattern( int iNo)
 {
     int  i = 0;
 
-    if( iNo < 0)       //Filter
+    if( iNo < 0)       //updater
     {
         iNo = -iNo;
     }
