@@ -47,6 +47,11 @@ int main()
 BOOL ChkVowel( char *str)
 {
 
+    if( str == NULL)        //Filter
+    {
+        return -1;
+    }
+
     while( *str != '\0')
     {
         if((*str=='a')||(*str=='A')||(*str=='e')||(*str=='E')||(*str=='i')||(*str=='I')||(*str=='o')||(*str=='O')||(*str=='u')||(*str=='U'))
