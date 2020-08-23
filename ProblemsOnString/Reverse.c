@@ -54,6 +54,8 @@ int Reverse( char *str )
 		--str;
 	}
 
+/*Here we only displayed in reverse order actual changes at address location are not happened.*/
+
 }
 
 
