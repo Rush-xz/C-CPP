@@ -56,14 +56,22 @@ BOOL ChkVowel( char *str)
     {
         if((*str=='a')||(*str=='A')||(*str=='e')||(*str=='E')||(*str=='i')||(*str=='I')||(*str=='o')||(*str=='O')||(*str=='u')||(*str=='U'))
         {
-            return TRUE;
+            //return TRUE;   //Dont write return in loop
             break;
         }
         
         ++str;   
     }
 
-    return FALSE;
+
+    if( *str == '\0')
+    {
+        return FALSE;
+    }
+    else
+    {
+        return TRUE;
+    }
 }
 
 /*  Output :

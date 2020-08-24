@@ -63,14 +63,22 @@ BOOL ChkChar( char *str , char ch)
     {
         if( *str == ch )
         {
-            return TRUE;
-            break;
+            //return TRUE;      //Dont write return in loop
+           break;
         }
         
         ++str;   
     }
 
-    return FALSE;
+    if( *str == '\0' )
+    {
+        return FALSE;
+    }
+    else
+    {
+        return TRUE;
+    }
+
 }
 
 /*  Output :

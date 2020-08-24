@@ -58,14 +58,21 @@ int FirstOccuranceInd( char *str , char ch)
         index++;
         if( *str == ch )
         {
-            return index;
+            //return index;
             break;
         }
         
         ++str;   
     }
 
-    return -1; 
+    if( *str == '\0')
+    {
+    	return -1; 
+    }
+    else
+    {
+    	return index;
+    }
 
 }
 

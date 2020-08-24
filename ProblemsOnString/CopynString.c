@@ -49,7 +49,7 @@ int StrNCpyX( char *src , char *dest , int iCnt)
         return -1;
     }   
 
-    while( *src != '\0' && (iCnt > 0) )
+    while( (*src != '\0') && (iCnt > 0) )
     {
        *dest = *src;        //Copying
 

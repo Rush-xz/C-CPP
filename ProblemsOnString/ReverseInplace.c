@@ -26,44 +26,44 @@ int main()
 
     ReverseInplace(Arr );
 
+    printf("String Reversed Inplace    : %s",Arr);
+
     return 0;
 }
 
 //Function
 int ReverseInplace( char *str)
 {
-    char *ptr = str;
-    char *p =  str;
+    char *End = NULL;
+    char *Start = NULL;
     char Temp;
+
+
+    End = str;
+    Start = str;
 
     if( str == NULL)        //Filter
     {
         return -1;
     }   
 
-    while( *ptr != '\0')
+    while( *End != '\0')   //N
     {
-        ++ptr;
-    }--ptr;
+        ++End;
+    }--End;
 
 
-    printf("String Reversed Inplace    : ");
-    while( *p != '\0' )
+    
+    while( Start < End )      // N/2    Total = N + N/2
     {
+
+        Temp = *Start;
+        *Start = *End;
+        *End = Temp;
+
+        ++Start; 
+        --End;
         
-        if( str < ptr)
-        {
-            Temp = *str;
-            *str = *ptr;
-            *ptr = Temp;
-
-            ++str; 
-            --ptr;
-        }
-
-        printf("%c",*p);
-
-        ++p;
     }
 
     /*while( *p != '\0')
