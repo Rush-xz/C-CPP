@@ -45,14 +45,10 @@ int main()
 //Static Function
 BOOL CheckBit( UINT No )
 {
-	int iMask = 0 , iMask1 , iMask2;
+	int iMask = 0 ;
 	int iResult = 0;
 
-	iMask1 = 0x00000040;
-
-	iMask2 = 0x00000080 | iMask1;
-
-	iMask = 0x00000100 | iMask2;
+	iMask = 0x000001C0;		// 0001 1100 0000 = 1C0
 
 
 	iResult = iMask & No;
