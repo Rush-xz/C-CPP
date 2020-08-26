@@ -38,7 +38,7 @@ int main()
 }
 
 
-//Static Function
+// Function
 int ToggleBit( UINT No , int iPos)
 {
 	int iMask = 0;

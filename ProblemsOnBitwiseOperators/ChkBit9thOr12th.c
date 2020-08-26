@@ -1,6 +1,9 @@
 //////////////////////////////////////////////////////////////
 //
-//	Write a program which checks whether 5th & 18th bit is On or OFF.
+//		Write a program which accept one number from user and check whether
+//		9th or 12th bit is on or off.
+//		Input : 257
+//		Output : TRUE
 //
 //////////////////////////////////////////////////////////////
 
@@ -44,15 +47,17 @@ int main()
 //Function
 BOOL CheckBit( UINT No )
 {
-	int iMask = 0;
-	int iResult = 0;
+	int iMask1 = 0 , iMask2 =0;
+	int iResult1 = 0, iResult2 = 0;
 
-	iMask = 0x00020010; 		//Hexadecimal
+	iMask1 = 0x00000100; 		//Hexadecimal
+	iMask2 = 0x00000800;
 
-	iResult = iMask & No;
+	iResult1 = iMask1 & No;
+	iResult2 = iMask2 & No;
 
-	if( iResult == iMask )
-	{
+	if( (iResult1 == iMask1) || (iResult2 == iMask2) )//if Anyone of ON
+	{													//then result will TRUE 
 		return TRUE;
 	}
 	else
@@ -67,11 +72,20 @@ BOOL CheckBit( UINT No )
 
 /*	OUTPUT :
 
-Enter The Number        :999999
-Bit is On.
+Enter The Number        :1
+ Bit is OFF.
 
-Enter The Number        :1564
-Bit is OFF.
+Enter The Number        :256
+ Bit is On.
+
+Enter The Number        :257
+ Bit is On.
+
+Enter The Number        :5632
+ Bit is OFF.
+
+Enter The Number        :2048
+ Bit is On.
 
 */
 

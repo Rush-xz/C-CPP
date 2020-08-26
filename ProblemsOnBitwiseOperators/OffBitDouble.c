@@ -33,7 +33,7 @@ int main()
 }
 
 
-//Static Function
+//Function
 int OffBit( UINT No )
 {
 	int iMask = 0;

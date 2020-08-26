@@ -42,7 +42,7 @@ int main()
 }
 
 
-//Static Function
+// Function
 BOOL CheckBit( UINT No )
 {
 	int iMask = 0 ;

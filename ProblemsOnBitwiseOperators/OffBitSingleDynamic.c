@@ -37,7 +37,7 @@ int main()
 }
 
 
-//Static Function
+//Dynamic Function
 int OffBit( UINT No , int iPos)
 {
 	int iMask = 0;
