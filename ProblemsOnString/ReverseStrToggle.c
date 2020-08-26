@@ -1,11 +1,9 @@
 ///////////////////////////////////////////////////////////////////////
 //
-//      Write a program which accept string from user reverse that string
-//      in place.
-//      Input : “abcd”
-//      Output : “dcba”
-//      Input : “abba”
-//      Output : “abba”
+//      Accept string from user and reverse the contents of that string by
+//      toggling the case.
+//      Input : “aCBdef”
+//      Output : “FEDcbA”
 //          
 ///////////////////////////////////////////////////////////////////////
 
@@ -13,7 +11,7 @@
 #include<stdio.h>
 
 //Prototype 
-int ReverseInplace( char *);
+int ReverseStrToggle( char *);
 
 //Entry-Point Function
 int main()
@@ -24,7 +22,7 @@ int main()
     printf("Enter the string :");
     scanf("%[^'\n']s",Arr);
 
-    ReverseInplace(Arr );
+    ReverseStrToggle(Arr );
 
     printf("String Reversed Inplace    : %s",Arr);
 
@@ -32,7 +30,7 @@ int main()
 }
 
 //Function
-int ReverseInplace( char *str)
+int ReverseStrToggle( char *str)
 {
     char *End = NULL;
     char *Start = NULL;
@@ -49,6 +47,12 @@ int ReverseInplace( char *str)
 
     while( *End != '\0')   //N
     {
+
+        if( (*End>='A') && (*End<='Z') )
+            *End = *End + 32;
+        else if( (*End>='a') && (*End<='z') )
+            *End = *End - 32;
+
         ++End;
     }--End;
 
@@ -66,25 +70,15 @@ int ReverseInplace( char *str)
         
     }
 
-    /*while( *p != '\0')
-    {   
-        printf("%c",*p);
-        ++p;
-    }*/
-/*Here actual changes at address location are happened.*/
-
 
 }
 
 /*  Output :
 
-Enter the string :abcd
-String Reversed Inplace    : dcba
+Enter the string :aCBdef
+String Reversed Inplace    : FEDbcA
 
-Enter the string :abba
-String Reversed Inplace    : abba
-
-Enter the string :Rushikesh
-String Reversed Inplace    : hsekihsuR
+Enter the string :PuBgI
+String Reversed Inplace    : iGbUp
 
 */
