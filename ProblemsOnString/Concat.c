@@ -12,7 +12,7 @@
 #include<stdio.h>
 
 //Prototype 
-void Concat( char * , char *);
+void Concat( char * , const char *);
 
 //Entry-Point Function
 int main()
@@ -36,7 +36,7 @@ int main()
 }
 
 //Function
-void Concat( char *src , char *dest)
+void Concat( char *src , const char *dest)
 {
 
     if( (src == NULL ) || (dest== NULL) )       //Filter
@@ -46,10 +46,6 @@ void Concat( char *src , char *dest)
 
     while( *src  != '\0')        //Traverse First String Till End
     {    
-    	if( *(src + 1) == '\0')
-    	{
-    		*src = ' ';
-    	}
 
         src++;
     }

@@ -1,11 +1,9 @@
 ///////////////////////////////////////////////////////////////////////
 //
-//      Write a program which accept string from user count number of
-//      words from string
-//      Input : “Marvellous Multi OS”
-//      Output : 3
-//      Input : “ Marvellous Multi OS Pune”
-//      Output : 4
+//      Write a program which accept string from user and return length of
+//      largest word.
+//      Input : “Marvellous Multi OS Infosystems”
+//      Output : 11
 //          
 ///////////////////////////////////////////////////////////////////////
 
@@ -15,7 +13,7 @@
 #define  OUT 0      /*Outside a Word*/
 
 //Prototype 
-int WordCount( const char *);
+int LargestWord( const char *);
 
 //Entry-Point Function
 int main()
@@ -26,17 +24,17 @@ int main()
     printf("Enter the string :");
     scanf("%[^'\n']s",Arr);
 
-    iRet = WordCount(Arr );
+    iRet = LargestWord(Arr );
 
-    printf("Number of words in strings  : %d",iRet);
+    printf("Length of largest word in string  : %d",iRet);
 
     return 0;
 }
 
 //Function
-int WordCount( const char *Str)
+int LargestWord( const char *Str)
 {
-    int iCnt = 0 , STATE = 0;
+    int iMax[10] = {0} , STATE = 0 , i=0 , largest = 0;
 
     if( Str == NULL)        //Filter
     {
@@ -53,27 +51,33 @@ int WordCount( const char *Str)
         else if( STATE == OUT )
         {    
             STATE = IN;
-            ++iCnt;
+            i++;
+            iMax[i]++;
+        }
+        else
+        {
+            iMax[i]++;
         }
 
         ++Str;         
     }
 
-    return iCnt;
+    largest = iMax[1];
+    for( i=0; i<=10; i++)
+    {   
+        if( iMax[i] > largest )
+        {
+            largest = iMax[i];
+        }
+    }
 
+    return largest;
     
 }
 
 /*  Output :
 
-Enter the string :Marvellous Multi OS
-Number of words in strings  : 3
-
-
-Enter the string :Marvellous      Multi   OS
-Number of words in strings  : 3
-
-Enter the string :Marvellous     Multi   OS  Pune
-Number of words in strings  : 4
+Enter the string :Marvellous Multi OS InfoSystems
+Length of largest word in string  : 11
 
 */

@@ -17,7 +17,7 @@
 typedef int BOOL;
 
 //Prototype 
-BOOL StrCmpX( char * , char *);
+BOOL StrCmpX( const char * ,const char *);
 
 //Entry-Point Function
 int main()
@@ -49,7 +49,7 @@ int main()
 }
 
 //Function
-BOOL StrCmpX( char *src , char *dest)
+BOOL StrCmpX( const char *src ,const char *dest)
 {
 
     if( (src == NULL ) || (dest== NULL) )       //Filter
