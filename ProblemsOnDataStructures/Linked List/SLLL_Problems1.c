@@ -7,6 +7,10 @@
 //Header
 #include<stdio.h>
 #include<malloc.h>
+#define TRUE 1 
+#define FALSE 0
+
+typedef int BOOL;
 
 //Structure of node of linked list
 typedef struct Node
@@ -21,6 +25,8 @@ void DisplayEle(PNODE);
 int FirstOccurance(PNODE , int);
 int LastOccurance(PNODE , int);
 int AdditionOfAllEle(PNODE);
+int LargestElement(PNODE);
+int SmallestElement(PNODE);
 
 
 //Driver Function
@@ -57,6 +63,11 @@ int main()
 	iRet = AdditionOfAllEle(Head);
 	printf("\n\nAddition Of All Elements  	:%d",iRet);
 
+	iRet = LargestElement(Head);
+	printf("\n\nLargest Element from Linked List is  :%d",iRet);
+
+	iRet = SmallestElement(Head);
+	printf("\n\nSmallest Element from Linked List is  :%d",iRet);
 
 }
 
@@ -114,6 +125,8 @@ void DisplayEle( PNODE Head )
 		printf("| %d | -> ",Head->iData);
 		Head = Head -> Next;
 	}
+
+	printf("NULL\n");
 }//End of DisplayEle
 
 
@@ -207,3 +220,59 @@ int AdditionOfAllEle(PNODE Head )
 	return iSum;
 
 }//End of AdditionOfAllEle
+
+
+////////////////////////////////////////////////////////////
+//
+//  Name        :LargestElement
+//  Input       :PNODE
+//  Returns     :int
+//  Description :Largest element in linked list
+//  Author      :Rushikesh Godase
+//  Date        :31 Aug 2020
+//
+////////////////////////////////////////////////////////////
+int LargestElement(PNODE Head )
+{
+	int iMax = Head->iData;
+
+	while( Head != NULL)
+	{
+
+		if( iMax < Head -> iData )
+			iMax = Head -> iData;
+
+		Head = Head -> Next;
+	}
+
+	return iMax;
+
+}//End of LargestElement
+
+
+////////////////////////////////////////////////////////////
+//
+//  Name        :SmallestElement
+//  Input       :PNODE
+//  Returns     :int
+//  Description :Smallest element in linked list
+//  Author      :Rushikesh Godase
+//  Date        :31 Aug 2020
+//
+////////////////////////////////////////////////////////////
+int SmallestElement(PNODE Head )
+{
+	int iMin = Head -> iData;
+
+	while( Head != NULL)
+	{
+
+		if( iMin > Head -> iData )
+			iMin = Head -> iData;
+
+		Head = Head -> Next;
+	}
+
+	return iMin;
+
+}//End of SmallestElement
