@@ -26,6 +26,9 @@ void DisplayEle(PNODE);
 void PerfectNum(PNODE);
 void DisplayPrime(PNODE);
 int  AdditionEven(PNODE);
+void SumDigits(PNODE);
+int  SecondMaximum(PNODE);
+int  SecondMinimum(PNODE);
 
 
 
@@ -72,6 +75,22 @@ int main()
 	/*addition of Even Numbers*/
 	iRet = AdditionEven(Head);
 	printf("\n\n Addition of Even Numbers From SLLL  :%d",iRet);
+		
+
+	/*addition of Digits of elements*/
+	printf("\n\nSum of Digits of Number From SLLL  :");
+	SumDigits(Head);
+
+	/*Displays Second Maximum Number*/
+	iRet = SecondMaximum(Head);
+	printf("\n\n Second Maximum Number From SLLL  :%d",iRet);
+	
+
+	/*Displays Second Minimum Number*/
+	iRet = SecondMinimum(Head);
+	printf("\n\n Second Minimum Number From SLLL  :%d",iRet);
+	
+
 }
 
 
@@ -166,6 +185,13 @@ void InsertLast( PPNODE First , int iNo)
 ////////////////////////////////////////////////////////////
 void DisplayEle( PNODE First )
 {
+
+	if( NULL == First)
+	{
+		printf("Empty Linked List.\n");
+		return;
+	}
+
 	while( First != NULL)
 	{
 		printf("| %d | -> ",First->iData);
@@ -189,6 +215,12 @@ void DisplayEle( PNODE First )
 void PerfectNum( PNODE First )
 {	
 	int iSum = 0 , i=0 , Num = 0 , iFlag = 0;
+
+	if( NULL == First)
+	{
+		printf("Empty Linked List.\n");
+		return;
+	}
 
 	while( First != NULL)
 	{
@@ -217,6 +249,10 @@ void PerfectNum( PNODE First )
 	{
 		printf("There are no Perfect Numbers in LL.\n");
 	}
+	else
+	{
+		printf("\n");
+	}
 
 }//End of PerfectNum
 
@@ -234,6 +270,12 @@ void PerfectNum( PNODE First )
 void DisplayPrime( PNODE First )
 {	
 	int i=0 , Num = 0 , iFlag = 0;
+
+	if( NULL == First)
+	{
+		printf("Empty Linked List.\n");
+		return;
+	}
 
 	while( First != NULL)
 	{
@@ -260,6 +302,10 @@ void DisplayPrime( PNODE First )
 	{
 		printf("There are no Prime Numbers in LL.\n");
 	}
+	else
+	{
+		printf("\n");
+	}
 	
 
 }//End of DisplayPrime
@@ -279,6 +325,12 @@ int AdditionEven( PNODE First )
 {	
 	int iFlag = 0 , iSum = 0;
 
+	if( NULL == First)
+	{
+		printf("Empty Linked List.");
+		return -1;
+	}
+
 	while( First != NULL)
 	{
 		if( (First->iData) % 2 == 0 )
@@ -292,7 +344,6 @@ int AdditionEven( PNODE First )
 
 	if( iFlag == 0)
 	{
-		printf("There are no Prime Numbers in LL.\n");
 		return -1;
 	}
 	else
@@ -301,4 +352,136 @@ int AdditionEven( PNODE First )
 	}
 	
 
-}//End of DisplayPrime
+}//End of AdditionEven
+
+
+////////////////////////////////////////////////////////////
+//
+//  Name        :SumDigits
+//  Input       :PNODE
+//  Returns     :void
+//  Description :Computes sum of Digits of Number from linked list
+//  Author      :Rushikesh Godase
+//  Date        :31 Aug 2020
+//
+////////////////////////////////////////////////////////////
+void SumDigits( PNODE First )
+{	
+	int iSum = 0 , iDigit = 0 , iNum = 0;
+
+	if( NULL == First)
+	{
+		printf("Empty Linked List.");
+		return;
+	}
+
+	while( First != NULL)
+	{
+		iNum = First->iData;
+		iDigit = 0;
+		iSum = 0;
+		
+		while( iNum != 0)
+		{
+			iDigit = iNum % 10;
+
+			iSum = iSum + iDigit;
+
+			iNum = iNum /10;
+		}
+
+		printf("%d\t",iSum);
+
+		First = First -> Next;
+	}
+
+	
+}//End of SumDigits
+
+
+////////////////////////////////////////////////////////////
+//
+//  Name        :SecondMaximum
+//  Input       :PNODE
+//  Returns     :int
+//  Description :Returns the second maximum Number from linked list
+//  Author      :Rushikesh Godase
+//  Date        :31 Aug 2020
+//
+////////////////////////////////////////////////////////////
+int SecondMaximum( PNODE First )
+{	
+	int iMax1 = 0 , iMax2 = 0 , iNum = 0;
+
+	if( NULL == First)
+	{
+		printf("Empty Linked List.");
+		return -1;
+	}
+
+	iMax1 = First->iData;
+	First = First->Next;
+	while( First != NULL)
+	{
+		iNum = First->iData;
+		
+			if(iNum>iMax1)		//iNum Greater than iMax1
+			{
+				iMax2 = iMax1;
+				iMax1 = iNum;
+			}
+			else if(iNum>iMax2)//iNum Greater than iMax2 but less than iMax1
+			{
+				iMax2 = iNum;
+			}
+
+		First = First -> Next;
+	}
+
+	return iMax2;
+	
+}//End of SecondMaximum
+
+
+////////////////////////////////////////////////////////////
+//
+//  Name        :SecondMinimum
+//  Input       :PNODE
+//  Returns     :int
+//  Description :Returns the second minimum Number from linked list
+//  Author      :Rushikesh Godase
+//  Date        :31 Aug 2020
+//
+////////////////////////////////////////////////////////////
+/*int SecondMinimum( PNODE First )
+{	
+	int iMin1 = 0 , iMin2 = 0 , iNum = 0;
+
+	if( NULL == First)
+	{
+		printf("Empty Linked List.");
+		return -1;
+	}
+
+	iMin1 = First->iData;
+	First = First->Next;
+	while( First != NULL)
+	{
+		iNum = First->iData;
+		
+			if(iNum<iMin1)
+			{
+				iMin2 = iMin1;
+				iMin1 = iNum;
+			}
+			else if(iNum<iMin2)
+			{
+				iMin2 = iNum;
+			}
+
+		First = First -> Next;
+	}
+
+	return iMin2;
+	
+}//End of SecondMinimum*/
