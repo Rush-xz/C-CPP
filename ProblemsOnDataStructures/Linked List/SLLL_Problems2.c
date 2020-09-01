@@ -7,7 +7,10 @@
 //Header
 #include<stdio.h>
 #include<malloc.h>
+#define TRUE 1
+#define FALSE 0
 
+typedef int BOOL;
 
 //Structure of node of linked list
 typedef struct Node
@@ -20,11 +23,10 @@ typedef struct Node
 void InsertFirst( PPNODE , int );
 void InsertLast( PPNODE , int );
 void DisplayEle(PNODE);
-int FirstOccurance(PNODE , int);
-int LastOccurance(PNODE , int);
-int AdditionOfAllEle(PNODE);
-int LargestElement(PNODE);
-int SmallestElement(PNODE);
+void PerfectNum(PNODE);
+void DisplayPrime(PNODE);
+int  AdditionEven(PNODE);
+
 
 
 //Driver Function
@@ -59,30 +61,17 @@ int main()
 	printf("\nDisplay Elements 	:\n");
 	DisplayEle(Head);
 
-	/*Search First Occurance Element From SLLL*/	
-	printf("\n\nEnter the element(For First Occurance) 	:");
-	scanf("%d",&iNo);
-	iRet = FirstOccurance(Head , iNo);
-	printf("First Occurance of %d is at : %d",iNo,iRet);
+	/*Display Perfect Numbers*/
+	printf("\n\n Perfect Numbers From SLLL 	:");
+	PerfectNum(Head);
 
-	/*Search Last Occurance of Element From SLLL*/
-	printf("\n\nEnter the element(For Last Occurance) 	:");
-	scanf("%d",&iNo);
-	iRet = LastOccurance(Head , iNo);
-	printf("Last Occurance of %d is at : %d",iNo,iRet);
+	/*Display Prime Numbers*/
+	printf("\n\n Prime Numbers From SLLL 	:");
+	DisplayPrime(Head);
 
-	/*Display Addition All Elements From SLLL*/
-	iRet = AdditionOfAllEle(Head);
-	printf("\n\nAddition Of All Elements  	:%d",iRet);
-
-	/*Display Largest Element From SLLL*/
-	iRet = LargestElement(Head);
-	printf("\n\nLargest Element from Linked List is  :%d",iRet);
-
-	/*Display Smallest Element From SLLL*/
-	iRet = SmallestElement(Head);
-	printf("\n\nSmallest Element from Linked List is  :%d",iRet);
-
+	/*addition of Even Numbers*/
+	iRet = AdditionEven(Head);
+	printf("\n\n Addition of Even Numbers From SLLL  :%d",iRet);
 }
 
 
@@ -189,188 +178,127 @@ void DisplayEle( PNODE First )
 
 ////////////////////////////////////////////////////////////
 //
-//  Name        :FirstOccurance
-//  Input       :PNODE , int
-//  Returns     :int
-//  Description :First Occurance of element in linked list
+//  Name        :PerfectNum
+//  Input       :PNODE
+//  Returns     :void
+//  Description :Display All Perfect Numbers from linked list
 //  Author      :Rushikesh Godase
 //  Date        :31 Aug 2020
 //
 ////////////////////////////////////////////////////////////
-int FirstOccurance(PNODE First , int iNo)
-{
-	int iPos = 0;
+void PerfectNum( PNODE First )
+{	
+	int iSum = 0 , i=0 , Num = 0 , iFlag = 0;
 
 	while( First != NULL)
 	{
-		++iPos;
-		if( First->iData == iNo)
+		Num = First->iData;
+
+		for( i=1; i<=Num/2; i++)
 		{
-			break;
+			if( Num % i == 0 )
+			{	
+				iSum = iSum + i;
+			}	
+		}
+
+		if(iSum == Num)
+		{	
+			printf("%d\t",Num);
+			iFlag = 1;
+		}
+
+		iSum = 0;
+
+		First = First -> Next;
+	}
+
+	if( iFlag == 0)
+	{
+		printf("There are no Perfect Numbers in LL.\n");
+	}
+
+}//End of PerfectNum
+
+
+////////////////////////////////////////////////////////////
+//
+//  Name        :DisplayPrime
+//  Input       :PNODE
+//  Returns     :void
+//  Description :Display All Prime Numbers from linked list
+//  Author      :Rushikesh Godase
+//  Date        :31 Aug 2020
+//
+////////////////////////////////////////////////////////////
+void DisplayPrime( PNODE First )
+{	
+	int i=0 , Num = 0 , iFlag = 0;
+
+	while( First != NULL)
+	{
+		Num = First->iData;
+
+		for( i=Num/2; i>0; --i)
+		{
+			if( Num % i == 0 )
+			{	
+				break;
+			}
+		}
+
+		if(i == 1 )
+		{
+			printf("%d\t",Num);
+			iFlag = 1;
 		}
 
 		First = First -> Next;
 	}
 
-	if( First == NULL)
+	if( iFlag == 0)
 	{
-		return -1;			//Element not present in linked list
+		printf("There are no Prime Numbers in LL.\n");
+	}
+	
+
+}//End of DisplayPrime
+
+
+////////////////////////////////////////////////////////////
+//
+//  Name        :AdditionEven
+//  Input       :PNODE
+//  Returns     :int
+//  Description :Returns Addition of Even Numbers from linked list
+//  Author      :Rushikesh Godase
+//  Date        :31 Aug 2020
+//
+////////////////////////////////////////////////////////////
+int AdditionEven( PNODE First )
+{	
+	int iFlag = 0 , iSum = 0;
+
+	while( First != NULL)
+	{
+		if( (First->iData) % 2 == 0 )
+		{
+			iSum = iSum + First -> iData;
+			iFlag = 1;
+		}
+
+		First = First -> Next;
+	}
+
+	if( iFlag == 0)
+	{
+		printf("There are no Prime Numbers in LL.\n");
+		return -1;
 	}
 	else
 	{
-		return iPos;		//returning position
+		return iSum;
 	}
-}//End of FirstOccurance
+	
 
-
-////////////////////////////////////////////////////////////
-//
-//  Name        :LastOccurance
-//  Input       :PNODE , int
-//  Returns     :int
-//  Description :Last Occurance of element in linked list
-//  Author      :Rushikesh Godase
-//  Date        :31 Aug 2020
-//
-////////////////////////////////////////////////////////////
-int LastOccurance(PNODE First , int iNo)
-{
-	int iCnt = 0 , iPos =-1;
-
-	while( First != NULL)
-	{
-		++iCnt;
-		if( First->iData == iNo)
-		{
-			iPos = iCnt;
-		}
-
-		First = First -> Next;
-	}
-
-	return iPos;
-
-}//End of LastOccurance
-
-
-////////////////////////////////////////////////////////////
-//
-//  Name        :AdditionOfAllEle
-//  Input       :PNODE
-//  Returns     :int
-//  Description :Additon of All elements in linked list
-//  Author      :Rushikesh Godase
-//  Date        :31 Aug 2020
-//
-////////////////////////////////////////////////////////////
-int AdditionOfAllEle(PNODE First )
-{
-	int iSum = 0;
-
-	while( First != NULL)
-	{
-		iSum = iSum + First -> iData;
-
-		First = First -> Next;
-	}
-
-	return iSum;
-
-}//End of AdditionOfAllEle
-
-
-////////////////////////////////////////////////////////////
-//
-//  Name        :LargestElement
-//  Input       :PNODE
-//  Returns     :int
-//  Description :Largest element in linked list
-//  Author      :Rushikesh Godase
-//  Date        :31 Aug 2020
-//
-////////////////////////////////////////////////////////////
-int LargestElement(PNODE First )
-{
-	int iMax = First->iData;
-
-	while( First != NULL)
-	{
-
-		if( iMax < First -> iData )
-			iMax = First -> iData;
-
-		First = First -> Next;
-	}
-
-	return iMax;
-
-}//End of LargestElement
-
-
-////////////////////////////////////////////////////////////
-//
-//  Name        :SmallestElement
-//  Input       :PNODE
-//  Returns     :int
-//  Description :Smallest element in linked list
-//  Author      :Rushikesh Godase
-//  Date        :31 Aug 2020
-//
-////////////////////////////////////////////////////////////
-int SmallestElement(PNODE First )
-{
-	int iMin = First -> iData;
-
-	while( First != NULL)
-	{
-
-		if( iMin > First -> iData )
-			iMin = First -> iData;
-
-		First = First -> Next;
-	}
-
-	return iMin;
-
-}//End of SmallestElement
-
-
-
-/*	OUTPUT	:
-
---------------Implementation of Singly Linear Linked List---------------
-
-Enter Number of Elements        :
-6
-
-Enter the Elements(Insert First)        :
-45
-12
-23
-45
-88
-5
-
-Display Elements        :
-| 5 | -> | 88 | -> | 45 | -> | 23 | -> | 12 | -> | 45 | -> NULL
-
-
-Enter the Element(Insert Last)  :67
-
-Display Elements        :
-| 5 | -> | 88 | -> | 45 | -> | 23 | -> | 12 | -> | 45 | -> | 67 | -> NULL
-
-
-Enter the element(For First Occurance)  :23
-First Occurance of 23 is at : 4
-
-Enter the element(For Last Occurance)   :45
-Last Occurance of 45 is at : 6
-
-Addition Of All Elements        :285
-
-Largest Element from Linked List is  :88
-
-Smallest Element from Linked List is  :5
-
-*/
+}//End of DisplayPrime
