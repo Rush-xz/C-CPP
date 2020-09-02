@@ -20,11 +20,14 @@ typedef struct Node
 void InsertFirst( PPNODE , int );
 void InsertLast( PPNODE , int );
 void DisplayEle(PNODE);
-int FirstOccurance(PNODE , int);
-int LastOccurance(PNODE , int);
-int AdditionOfAllEle(PNODE);
-int LargestElement(PNODE);
-int SmallestElement(PNODE);
+void Deallocate(PPNODE);
+int  CountEle(PNODE);
+int  CountFreq(PNODE , int);
+int  FirstOccurance(PNODE , int);
+int  LastOccurance(PNODE , int);
+int  AdditionOfAllEle(PNODE);
+int  LargestElement(PNODE);
+int  SmallestElement(PNODE);
 
 
 //Driver Function
@@ -33,6 +36,7 @@ int main()
 	printf("\n--------------Implementation of Singly Linear Linked List---------------\n\n");
 
 	PNODE Head = NULL;
+
 	int iSize = 0 , iNo = 0 , i = 0 , iRet = 0;
 
 	printf("Enter Number of Elements 	: ");
@@ -59,29 +63,55 @@ int main()
 	printf("\nDisplay Elements 	:\n");
 	DisplayEle(Head);
 
+	/*Count All Elements From SLLL*/
+	iRet = CountEle(Head);
+	printf("\n\nTotal Number of Elements(Count) 	:%3d",iRet);
+
+
+	/*Count frequency of Element From SLLL*/
+	printf("\n\nEnter the element(For Count frequency of Element) 	:");
+	scanf("%d",&iNo);
+	iRet = CountFreq(Head , iNo);
+	if(iRet != -1)
+		printf("\n\nFrequency of Element %d is	:%3d",iNo,iRet);
+
+
 	/*Search First Occurance Element From SLLL*/	
 	printf("\n\nEnter the element(For First Occurance) 	:");
 	scanf("%d",&iNo);
 	iRet = FirstOccurance(Head , iNo);
-	printf("First Occurance of %d is at : %d",iNo,iRet);
+	if(iRet == 0)
+		printf("\n Element not present in Linked List.\n");
+	else if( iRet != -1)
+		printf("\nFirst Occurance of %d is at : %d",iNo,iRet);
 
 	/*Search Last Occurance of Element From SLLL*/
 	printf("\n\nEnter the element(For Last Occurance) 	:");
 	scanf("%d",&iNo);
 	iRet = LastOccurance(Head , iNo);
-	printf("Last Occurance of %d is at : %d",iNo,iRet);
+	if(iRet == 0)
+		printf("\n Element not present in Linked List.\n");
+	else if( iRet != -1)
+		printf("\nLast Occurance of %d is at : %d",iNo,iRet);
+
 
 	/*Display Addition All Elements From SLLL*/
 	iRet = AdditionOfAllEle(Head);
-	printf("\n\nAddition Of All Elements  	:%d",iRet);
+	if(iRet != -1)
+		printf("\n\nAddition Of All Elements  	:%d",iRet);
 
 	/*Display Largest Element From SLLL*/
 	iRet = LargestElement(Head);
-	printf("\n\nLargest Element from Linked List is  :%d",iRet);
+	if( iRet != -1)
+		printf("\n\nLargest Element from Linked List is  :%d",iRet);
 
 	/*Display Smallest Element From SLLL*/
 	iRet = SmallestElement(Head);
-	printf("\n\nSmallest Element from Linked List is  :%d",iRet);
+	if( iRet != -1)
+		printf("\n\nSmallest Element from Linked List is  :%d",iRet);
+
+	/*Deallocate All Elements from linked list*/
+	Deallocate(&Head);
 
 }
 
@@ -177,6 +207,12 @@ void InsertLast( PPNODE First , int iNo)
 ////////////////////////////////////////////////////////////
 void DisplayEle( PNODE First )
 {
+	if( NULL == First)
+	{
+		printf("Empty Linked List.\n");
+		return;
+	}
+
 	while( First != NULL)
 	{
 		printf("| %d | -> ",First->iData);
@@ -185,6 +221,105 @@ void DisplayEle( PNODE First )
 
 	printf("NULL\n");
 }//End of DisplayEle
+
+
+
+////////////////////////////////////////////////////////////
+//
+//  Name        :Deallocate
+//  Input       :PPNODE
+//  Returns     :void
+//  Description :Deallocates All Nodes from linked list
+//  Author      :Rushikesh Godase
+//  Date        :31 Aug 2020
+//
+////////////////////////////////////////////////////////////
+void Deallocate( PPNODE First )
+{
+
+	if( NULL == *First)
+	{
+		printf("Linked List is Empty.\n");
+		return;
+	}
+
+	PNODE Temp = NULL;
+
+	while( *First != NULL)
+	{
+		Temp = *First;
+		*First = Temp->Next;
+		free(Temp);
+	}
+
+}
+
+
+
+////////////////////////////////////////////////////////////
+//
+//  Name        :CountEle
+//  Input       :PNODE
+//  Returns     :int
+//  Description :Count all elements in linked list
+//  Author      :Rushikesh Godase
+//  Date        :31 Aug 2020
+//
+////////////////////////////////////////////////////////////
+int CountEle( PNODE First )
+{
+	int iCnt = 0;
+
+	if( NULL == First)
+	{
+		printf("Empty Linked List.\n");
+		return -1;
+	}
+
+	while( First != NULL)
+	{
+		++iCnt;
+
+		First = First -> Next;
+	}
+
+	return iCnt;
+
+}//End of CountEle
+
+////////////////////////////////////////////////////////////
+//
+//  Name        :CountFreq
+//  Input       :PNODE , int
+//  Returns     :int
+//  Description :Counts Frequency of element in linked list
+//  Author      :Rushikesh Godase
+//  Date        :31 Aug 2020
+//
+////////////////////////////////////////////////////////////
+int CountFreq( PNODE First , int iNo )
+{
+	int iFreq = 0;
+
+	if( NULL == First)
+	{
+		printf("Empty Linked List.\n");
+		return -1;
+	}
+
+	while( First != NULL)
+	{
+
+		if( First->iData == iNo )
+			++iFreq;
+
+		First = First -> Next;
+	}
+
+	return iFreq;
+
+}//End of CountFreq
+
 
 
 ////////////////////////////////////////////////////////////
@@ -201,6 +336,12 @@ int FirstOccurance(PNODE First , int iNo)
 {
 	int iPos = 0;
 
+	if( NULL == First)
+	{
+		printf("Empty Linked List.\n");
+		return -1;
+	}
+
 	while( First != NULL)
 	{
 		++iPos;
@@ -214,7 +355,7 @@ int FirstOccurance(PNODE First , int iNo)
 
 	if( First == NULL)
 	{
-		return -1;			//Element not present in linked list
+		return 0;			//Element not present in linked list
 	}
 	else
 	{
@@ -236,6 +377,12 @@ int FirstOccurance(PNODE First , int iNo)
 int LastOccurance(PNODE First , int iNo)
 {
 	int iCnt = 0 , iPos =-1;
+
+	if( NULL == First)
+	{
+		printf("Empty Linked List.\n");
+		return -1;
+	}
 
 	while( First != NULL)
 	{
@@ -267,6 +414,12 @@ int AdditionOfAllEle(PNODE First )
 {
 	int iSum = 0;
 
+	if( NULL == First)
+	{
+		printf("Empty Linked List.\n");
+		return -1;
+	}
+
 	while( First != NULL)
 	{
 		iSum = iSum + First -> iData;
@@ -292,6 +445,12 @@ int AdditionOfAllEle(PNODE First )
 int LargestElement(PNODE First )
 {
 	int iMax = First->iData;
+
+	if( NULL == First)
+	{
+		printf("Empty Linked List.\n");
+		return -1;
+	}
 
 	while( First != NULL)
 	{
@@ -321,6 +480,13 @@ int SmallestElement(PNODE First )
 {
 	int iMin = First -> iData;
 
+
+	if( NULL == First)
+	{
+		printf("Empty Linked List.\n");
+		return -1;
+	}
+
 	while( First != NULL)
 	{
 
@@ -340,37 +506,46 @@ int SmallestElement(PNODE First )
 
 --------------Implementation of Singly Linear Linked List---------------
 
-Enter Number of Elements        :
-6
+Enter Number of Elements        : 6
 
 Enter the Elements(Insert First)        :
-45
-12
+16
+49
 23
-45
-88
-5
+49
+22
+78
 
 Display Elements        :
-| 5 | -> | 88 | -> | 45 | -> | 23 | -> | 12 | -> | 45 | -> NULL
+| 78 | -> | 22 | -> | 49 | -> | 23 | -> | 49 | -> | 16 | -> NULL
 
 
-Enter the Element(Insert Last)  :67
+Enter the Element(Insert Last)  :12
 
 Display Elements        :
-| 5 | -> | 88 | -> | 45 | -> | 23 | -> | 12 | -> | 45 | -> | 67 | -> NULL
+| 78 | -> | 22 | -> | 49 | -> | 23 | -> | 49 | -> | 16 | -> | 12 | -> NULL
 
+
+Total Number of Elements(Count)         :  7
+
+Enter the element(For Count frequency of Element)       :49
+
+
+Frequency of Element 49 is      :  2
 
 Enter the element(For First Occurance)  :23
+
 First Occurance of 23 is at : 4
 
-Enter the element(For Last Occurance)   :45
-Last Occurance of 45 is at : 6
+Enter the element(For Last Occurance)   :49
 
-Addition Of All Elements        :285
+Last Occurance of 49 is at : 5
 
-Largest Element from Linked List is  :88
+Addition Of All Elements        :249
 
-Smallest Element from Linked List is  :5
+Largest Element from Linked List is  :78
+
+Smallest Element from Linked List is  :12
+
 
 */

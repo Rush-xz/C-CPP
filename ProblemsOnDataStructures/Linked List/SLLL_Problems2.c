@@ -7,10 +7,6 @@
 //Header
 #include<stdio.h>
 #include<malloc.h>
-#define TRUE 1
-#define FALSE 0
-
-typedef int BOOL;
 
 //Structure of node of linked list
 typedef struct Node
@@ -23,9 +19,11 @@ typedef struct Node
 void InsertFirst( PPNODE , int );
 void InsertLast( PPNODE , int );
 void DisplayEle(PNODE);
+void Deallocate( PPNODE );
 void PerfectNum(PNODE);
 void DisplayPrime(PNODE);
 int  AdditionEven(PNODE);
+int  AdditionOdd(PNODE);
 void SumDigits(PNODE);
 int  SecondMaximum(PNODE);
 int  SecondMinimum(PNODE);
@@ -65,17 +63,24 @@ int main()
 	DisplayEle(Head);
 
 	/*Display Perfect Numbers*/
-	printf("\n\n Perfect Numbers From SLLL 	:");
+	printf("\n\nPerfect Numbers From SLLL 	:");
 	PerfectNum(Head);
 
 	/*Display Prime Numbers*/
-	printf("\n\n Prime Numbers From SLLL 	:");
+	printf("\n\nPrime Numbers From SLLL 	:");
 	DisplayPrime(Head);
 
 	/*addition of Even Numbers*/
 	iRet = AdditionEven(Head);
-	printf("\n\n Addition of Even Numbers From SLLL  :%d",iRet);
+	if( iRet != -1)
+		printf("\n\nAddition of Even Numbers From SLLL  :%d",iRet);
 		
+
+	/*addition of Odd Numbers*/
+	iRet = AdditionOdd(Head);
+	if(iRet != -1)
+		printf("\n\nAddition of Odd Numbers From SLLL  :%d",iRet);
+
 
 	/*addition of Digits of elements*/
 	printf("\n\nSum of Digits of Number From SLLL  :");
@@ -83,13 +88,20 @@ int main()
 
 	/*Displays Second Maximum Number*/
 	iRet = SecondMaximum(Head);
-	printf("\n\n Second Maximum Number From SLLL  :%d",iRet);
+	if( iRet != -1)
+		printf("\n\nSecond Maximum Number From SLLL  :%d",iRet);
 	
 
 	/*Displays Second Minimum Number*/
 	iRet = SecondMinimum(Head);
-	printf("\n\n Second Minimum Number From SLLL  :%d",iRet);
-	
+	if( iRet != -1)
+		printf("\n\nSecond Minimum Number From SLLL  :%d",iRet);
+
+
+	/*Deallocate All Nodes from Linked List*/
+	Deallocate(&Head);
+
+	return 0;
 
 }
 
@@ -200,6 +212,37 @@ void DisplayEle( PNODE First )
 
 	printf("NULL\n");
 }//End of DisplayEle
+
+
+////////////////////////////////////////////////////////////
+//
+//  Name        :Deallocate
+//  Input       :PPNODE
+//  Returns     :void
+//  Description :Deallocates All Nodes from linked list
+//  Author      :Rushikesh Godase
+//  Date        :31 Aug 2020
+//
+////////////////////////////////////////////////////////////
+void Deallocate( PPNODE First )
+{
+
+	if( NULL == *First)
+	{
+		printf("Linked List is Empty.\n");
+		return;
+	}
+
+	PNODE Temp = NULL;
+
+	while( *First != NULL)
+	{
+		Temp = *First;
+		*First = Temp->Next;
+		free(Temp);
+	}
+
+}
 
 
 ////////////////////////////////////////////////////////////
@@ -357,6 +400,50 @@ int AdditionEven( PNODE First )
 
 ////////////////////////////////////////////////////////////
 //
+//  Name        :AdditionOdd
+//  Input       :PNODE
+//  Returns     :int
+//  Description :Returns Addition of Odd Numbers from linked list
+//  Author      :Rushikesh Godase
+//  Date        :31 Aug 2020
+//
+////////////////////////////////////////////////////////////
+int AdditionOdd( PNODE First )
+{	
+	int iFlag = 0 , iSum = 0;
+
+	if( NULL == First)
+	{
+		printf("Empty Linked List.");
+		return -1;
+	}
+
+	while( First != NULL)
+	{
+		if( (First->iData) % 2 != 0 )
+		{
+			iSum = iSum + First -> iData;
+			iFlag = 1;
+		}
+
+		First = First -> Next;
+	}
+
+	if( iFlag == 0)
+	{
+		return -1;
+	}
+	else
+	{
+		return iSum;
+	}
+	
+
+}//End of AdditionOdd
+
+
+////////////////////////////////////////////////////////////
+//
 //  Name        :SumDigits
 //  Input       :PNODE
 //  Returns     :void
@@ -390,7 +477,7 @@ void SumDigits( PNODE First )
 			iNum = iNum /10;
 		}
 
-		printf("%d\t",iSum);
+		printf("%4d",iSum);
 
 		First = First -> Next;
 	}
@@ -453,7 +540,7 @@ int SecondMaximum( PNODE First )
 //  Date        :31 Aug 2020
 //
 ////////////////////////////////////////////////////////////
-/*int SecondMinimum( PNODE First )
+int SecondMinimum( PNODE First )
 {	
 	int iMin1 = 0 , iMin2 = 0 , iNum = 0;
 
@@ -474,7 +561,7 @@ int SecondMaximum( PNODE First )
 				iMin2 = iMin1;
 				iMin1 = iNum;
 			}
-			else if(iNum<iMin2)
+			else if( (iNum<iMin2 || iMin2<iMin1) && iMin1 != iMin2 )
 			{
 				iMin2 = iNum;
 			}
@@ -484,4 +571,48 @@ int SecondMaximum( PNODE First )
 
 	return iMin2;
 	
-}//End of SecondMinimum*/
+}//End of SecondMinimum
+
+
+
+/*	OUTPUT :
+
+--------------Implementation of Singly Linear Linked List---------------
+
+Enter Number of Elements        : 6
+
+Enter the Elements(Insert First)        :
+46
+28
+41
+6
+13
+45
+
+Display Elements        :
+| 45 | -> | 13 | -> | 6 | -> | 41 | -> | 28 | -> | 46 | -> NULL
+
+
+Enter the Element(Insert Last)  :89
+
+Display Elements        :
+| 45 | -> | 13 | -> | 6 | -> | 41 | -> | 28 | -> | 46 | -> | 89 | -> NULL
+
+
+Perfect Numbers From SLLL       :6      28
+
+
+Prime Numbers From SLLL         :13     41      89
+
+
+Addition of Even Numbers From SLLL  :80
+
+Addition of Odd Numbers From SLLL  :188
+
+Sum of Digits of Number From SLLL  :   9   4   6   5  10  10  17
+
+Second Maximum Number From SLLL  :46
+
+Second Minimum Number From SLLL  :13
+
+*/
