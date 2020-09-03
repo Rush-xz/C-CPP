@@ -16,14 +16,15 @@ typedef struct Node
 }NODE , *PNODE , **PPNODE;
 
 //Global Declaration
-void InsertLast( PPNODE , int );
+void InsertLast(PPNODE , int);
 void DisplayEle(PNODE);
-void Deallocate( PPNODE );
+void Deallocate(PPNODE);
 int  CountEle(PNODE);
 void ReverseEachEle( PNODE );
 void DisplayPallindrome( PNODE );
 void DisplayDigitProd( PNODE );
-int  SmallestDigit(PNODE);
+void SmallestDigit(PNODE);
+void LargestDigit(PNODE);
 
 
 //Driver Function
@@ -38,7 +39,7 @@ int main()
 	scanf("%d",&iSize);
 
 	/*Insert elements Always At Last Position*/
-	printf("\nEnter the Elements(Insert Last) 	:\n");
+	printf("\n\nEnter the Elements(Insert Last) 	:\n");
 	for(i=0; i<iSize; i++)
 	{
 		scanf("%d",&iNo);
@@ -46,13 +47,13 @@ int main()
 	}
 
 	/*Display All Elements From SLLL*/
-	printf("\nDisplay Elements 	:\n");
+	printf("\n\nDisplay Elements 	:\n");
 	DisplayEle(Head);
 
 	
 	/*Count All Elements From SLLL*/
 	iRet = CountEle(Head);
-	printf("\n\nTotal Number of Elements(Count) 	:%3d",iRet);
+	printf("\n\nTotal Number of Elements(Count) 	    :%3d",iRet);
 
 
 	/*Display ReverseEachEle each Element From SLLL*/
@@ -60,16 +61,20 @@ int main()
 	ReverseEachEle(Head);
 	DisplayEle(Head);
 
-	printf("\n\nPallindrome Numbers in Linked List	:");
+	printf("\n\nPallindrome Numbers in Linked List	    :");
 	DisplayPallindrome(Head);
 
 	printf("\n\nDigit Product of Numbers in Linked List	:");
 	DisplayDigitProd(Head);
 
 
-	/*Display Smallest Digit From SLLL*/
-	iRet = SmallestDigit(Head);
-	printf("\n\nSmallest Digit 	:%3d",iRet);
+	/*Display Smallest Digit from each number From SLLL*/
+	printf("\n\nSmallest Digit from each Number.	:");
+	SmallestDigit(Head);
+
+	/*Display Smallest Digit from each number From SLLL*/
+	printf("\n\nLargest Digit from each Number.	        :");
+	LargestDigit(Head);
 
 
 	/*Deallocate All Nodes from Linked List*/
@@ -416,76 +421,141 @@ void DisplayDigitProd( PNODE First )
 //
 //  Name        :SmallestDigit
 //  Input       :PNODE
-//  Returns     :int
-//  Description :Smallest Digit in linked list
+//  Returns     :void
+//  Description :compute Smallest Digit from each number in LL
 //  Author      :Rushikesh Godase
-//  Date        :31 Aug 2020
+//  Date        :1 Sep 2020
 //
 ////////////////////////////////////////////////////////////
-int SmallestDigit(PNODE First )
+void SmallestDigit(PNODE First )
 {
-	int iDigit = 0 , iNo = 0 , iMin = 0 , Flag = 0;
+	int iDigit = 0 , iNo = 0 , iMin = 0 ;
+	char cFlag = 0;
 
 	if( NULL == First)
 	{
 		printf("Empty Linked List.\n");
-		return -1;
+		return;
 	}
 
 	while( First != NULL)
 	{
 		iNo = First->iData;
+		iDigit = 0;
+		cFlag = 0;
 
 		while( iNo != 0)
 		{
 			iDigit = iNo % 10;
 
-			if( Flag == 0)
+			if( cFlag == 0)
 			{
 				iMin = iDigit;
 			}
-			Flag=1;
-
-			if( iDigit < iMin )
+			else if( iDigit < iMin )
+			{	
 				iMin = iDigit;
+			}
 
+			cFlag = 1;
 			iNo = iNo / 10;
 		}
+
+		printf("%5d",iMin);
 		
 		First = First -> Next;
 	}
 
-	return iMin;
 
 }//End of SmallestDigit
 
+
+////////////////////////////////////////////////////////////
+//
+//  Name        :LargestDigit
+//  Input       :PNODE
+//  Returns     :void
+//  Description :Fun compute Largest Digit from each number in LL
+//  Author      :Rushikesh Godase
+//  Date        :1 Sep 2020
+//
+////////////////////////////////////////////////////////////
+void LargestDigit(PNODE First )
+{
+	int iDigit = 0 , iNo = 0 , iMax = 0 ;
+	char cFlag = 0;
+
+	if( NULL == First)
+	{
+		printf("Empty Linked List.\n");
+		return;
+	}
+
+	while( First != NULL)
+	{
+		iNo = First->iData;
+		iDigit = 0;
+		cFlag = 0;
+
+		while( iNo != 0)
+		{
+			iDigit = iNo % 10;
+
+			if( cFlag == 0)
+			{
+				iMax = iDigit;
+			}
+			else if( iDigit > iMax )
+			{	
+				iMax = iDigit;
+			}
+
+			cFlag = 1;
+			iNo = iNo / 10;
+		}
+
+		printf("%5d",iMax);
+		
+		First = First -> Next;
+	}
+
+
+}//End of LargestDigit
+
+
+
 /*	OUTPUT :
 
--------------Implementation of Singly Linear Linked List---------------
+--------------Implementation of Singly Linear Linked List---------------
 
-Enter Number of Elements        : 4
+Enter Number of Elements        : 6
+
 
 Enter the Elements(Insert Last)         :
-501
-26
-89
-24
+1203
+159
+494
+65
+66
+236
+
 
 Display Elements        :
-| 501 | -> | 26 | -> | 89 | -> | 24 | -> NULL
+| 1203 | -> | 159 | -> | 494 | -> | 65 | -> | 66 | -> | 236 | -> NULL
 
 
-Total Number of Elements(Count)         :  4
+Total Number of Elements(Count)             :  6
 
 Reverse each element of singly linked list  :
-| 105 | -> | 62 | -> | 98 | -> | 42 | -> NULL
+| 3021 | -> | 951 | -> | 494 | -> | 56 | -> | 66 | -> | 632 | -> NULL
 
 
-Pallindrome Numbers in Linked List      :There is no Pallindrome Number.
+Pallindrome Numbers in Linked List          :  494   66
 
+Digit Product of Numbers in Linked List :    6   45  144   30   36   36
 
-Digit Product of Numbers in Linked List :    5   12   72    8
+Smallest Digit from each Number.        :    0    1    4    5    6    2
 
-Smallest Digit  :  0
+Largest Digit from each Number.         :    3    9    9    6    6    6
 
 */

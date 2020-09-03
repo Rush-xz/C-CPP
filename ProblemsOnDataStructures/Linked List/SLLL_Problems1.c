@@ -444,7 +444,7 @@ int AdditionOfAllEle(PNODE First )
 ////////////////////////////////////////////////////////////
 int LargestElement(PNODE First )
 {
-	int iMax = First->iData;
+	int iMax = 0;
 
 	if( NULL == First)
 	{
@@ -452,6 +452,7 @@ int LargestElement(PNODE First )
 		return -1;
 	}
 
+	iMax = First -> iData;
 	while( First != NULL)
 	{
 
@@ -478,8 +479,7 @@ int LargestElement(PNODE First )
 ////////////////////////////////////////////////////////////
 int SmallestElement(PNODE First )
 {
-	int iMin = First -> iData;
-
+	int iMin = 0;
 
 	if( NULL == First)
 	{
@@ -487,6 +487,7 @@ int SmallestElement(PNODE First )
 		return -1;
 	}
 
+	iMin = First -> iData;
 	while( First != NULL)
 	{
 
