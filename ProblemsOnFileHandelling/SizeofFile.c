@@ -33,7 +33,7 @@ int main()
 //
 //  Name        :SizeofFile
 //  Input       :char []
-//  Returns     :void
+//  Returns     :int
 //  Description :function which Reads the file and calculate size of file.
 //  Author      :Rushikesh Godase
 //  Date        :3 Sep 2020

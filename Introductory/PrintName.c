@@ -13,7 +13,7 @@ int main()
     char cName[0] = {};
 
     printf("Enter Your Full Name :\n");
-	scanf("%[^\n]",cName);           /*%[^\n] would take all Characters
+	scanf("%[^'\n']s",cName);           /*%[^'\n']s would take all Characters
 		    						 in a single line as input(Special scanf)*/
     printf("Your name :\n%s",cName);
         

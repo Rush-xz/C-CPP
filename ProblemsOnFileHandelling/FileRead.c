@@ -71,9 +71,8 @@ void FileRead( char fname[] )
 
 /* OUTPUT :
 
-Please Enter the Name of File   :a.txt
 File opens successfully with [3] fd.
 Data from File a.txt is :
-Life is be$      
+Life is be$
 
 */

@@ -23,8 +23,11 @@ int main()
 	printf("Please Enter the Name of File 	:");
 	scanf("%s",&Name);
 
-	printf("Please Enter the Name of File 	:");
+	getchar();
+
+	printf("Please Enter the string 	:");
 	scanf("%[^'\n']s",&Str);
+
 
 	WriteData( Name , Str );
 
@@ -67,8 +70,13 @@ void WriteData( char fname[] , char Str[]  )
 
 /* OUTPUT :
 
-PPlease Enter the Name of File   :a.txt
-Please Enter the Name of File   :File opens successfully with [3] fd.
+Please Enter the Name of File   :a.txt
+Please Enter the string         :Hello World
+File opens successfully with [3] fd.
 Data Written successfully.
+
+
+File : a.txt
+Life is beautiful dont waste it for temporary peoples.Hello World
 
 */
