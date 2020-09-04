@@ -9,7 +9,7 @@
 //Header
 #include<stdio.h>
 #include<fcntl.h>
-#define BLOCKSIZE 1
+#define BLOCKSIZE 1024
 
 //Declaration
 int SizeofFile( char [] );
@@ -17,7 +17,8 @@ int SizeofFile( char [] );
 //Driver Function
 int main()
 {
-	char Name[20] , iRet = 0;
+	char Name[20];
+     int iRet = 0;
 
 	printf("Please Enter the Name of File 	:");
 	scanf("%s",&Name);
@@ -41,7 +42,7 @@ int main()
 ////////////////////////////////////////////////////////////
 int SizeofFile( char fname[] )
 {
-	int fd = 0 , iRet = 0 , iSize = 0;
+	int fd = 0 , iRet = 0 , iSize = 0 ;
 	int Arr[BLOCKSIZE];
 
 	fd = open(fname,O_RDONLY);
@@ -55,9 +56,11 @@ int SizeofFile( char fname[] )
 	printf("File opens successfully with [%d] fd.\n",fd);
 
 
-	while( (iRet = read(fd,Arr,1) ) != 0)
+	while( (iRet = read(fd,Arr,BLOCKSIZE) ) != 0)
 	{
-                ++iSize;
+                
+          iSize = iSize + iRet;
+
 		memset(Arr,0,BLOCKSIZE);
 	}
 
@@ -72,6 +75,10 @@ int SizeofFile( char fname[] )
 
 Please Enter the Name of File   :a.txt
 File opens successfully with [3] fd.
-Size of File is 54 bytes.             
+Size of File is 54 bytes.     
+
+Please Enter the Name of File   :SizeofFile.c
+File opens successfully with [3] fd.
+Size of File is 1508 bytes.        
 
 */

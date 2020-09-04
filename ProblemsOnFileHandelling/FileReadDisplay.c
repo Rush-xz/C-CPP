@@ -10,7 +10,7 @@
 //Header
 #include<stdio.h>
 #include<fcntl.h>
-#define BLOCKSIZE 256
+#define BLOCKSIZE 1024
 
 //Declaration
 void FileReadDisplay( char [] );
@@ -56,7 +56,7 @@ void FileReadDisplay( char fname[] )
 
 	while( (iRet = read(fd,Arr,BLOCKSIZE) ) != 0)
 	{
-		write(1,Arr,BLOCKSIZE);
+		write(1,Arr,iRet);
 		memset(Arr,0,BLOCKSIZE);
 	}
 
@@ -136,8 +136,6 @@ void FileReadDisplay( char fname[] )
 
         close(fd);
 
-}
-
-}                             
+}                          
 
 */

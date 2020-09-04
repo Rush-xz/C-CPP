@@ -40,11 +40,11 @@ void CreateFile( char fname[] )
 {
 	int fd = 0;
 
-	fd = creat(fname,0777);
+	fd = creat(fname,0777);  //All Permissions are given[rwx].
 
 	if( fd == -1)
 	{
-		printf("Unable to crate File.\n");
+		printf("Unable to create File.\n");
 		return;
 	}
 
