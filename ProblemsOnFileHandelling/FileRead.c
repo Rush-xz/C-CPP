@@ -65,6 +65,7 @@ void FileRead( char fname[] , int iSize )
         {
            printf("Unable to read the data from file\n");
            close(fd);
+           free(Arr);
            return;
         }
 
@@ -72,6 +73,7 @@ void FileRead( char fname[] , int iSize )
      //printf("\n iRet = %d",iRet);
 
 	close(fd);
+	free(Arr);
 
 }
 

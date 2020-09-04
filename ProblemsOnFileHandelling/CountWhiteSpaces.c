@@ -70,6 +70,8 @@ int CountSpaces( char fname[] )
 		memset(Arr , 0 , BLOCKSIZE);
 	}
 
+	close(fd);
+
 	return iCnt;
 }
 
