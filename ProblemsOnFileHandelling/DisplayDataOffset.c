@@ -142,5 +142,3 @@ OccuranceofChar.c File opened successfully.
 File Copied Successfully.
 
 */
-
-	
