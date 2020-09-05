@@ -1,7 +1,7 @@
 /////////////////////////////////////////////////////////////
 //
-//	Write a program which accept file name from user and print 
-//	its size by using library functions.(without calling stat function)	
+//	Write a program which accept file name from user and print
+//	 number of occurrence of Particular word in that file.	
 //
 /////////////////////////////////////////////////////////////
 
@@ -13,7 +13,7 @@
 #define BLOCKSIZE 1024
 
 //Prototype
-int FizeSize( char * );
+int WordCount( char [] , char []);
 
 //Driver Function
 int main( char  argc , char *argv[] ) //Enter file name by cmd line argu.
@@ -29,21 +29,21 @@ int main( char  argc , char *argv[] ) //Enter file name by cmd line argu.
 	scanf("%s",Fname);
 	*/
 
-	if( argc != 2)
+	if( argc != 3)
 	{
-		printf("File name is required.\n");
+		printf("File name and word is required.\n");
 		return 0;
 	}
 
-	iRet = FizeSize( argv[1] );
+	iRet = WordCount( argv[1] , argv[2] );
 
 	if( iRet != -1 || iRet != 0)
 	{
-		printf("Size of %s File is  :%d Bytes.\n",argv[1],iRet);
+		printf("Count of word [%s] in a File %s is :%d.\n",argv[2],argv[1],iRet);
 	}
-	else
+	else 
 	{
-		printf("Cannot compute size of file.\n");
+		printf("Entered word is not found.\n");
 	}
 
 	return 0;
@@ -52,16 +52,16 @@ int main( char  argc , char *argv[] ) //Enter file name by cmd line argu.
 
 ////////////////////////////////////////////////////////////
 //
-//  Name        :FizeSize
-//  Input       :char *
+//  Name        :WordCount
+//  Input       :char [] , char []
 //  Returns     :int
-//  Description :Compute File size using 
+//  Description :Compute particular Word count using 
 //					library functions.
 //  Author      :Rushikesh Godase
 //  Date        :5 Sep 2020
 //
 ////////////////////////////////////////////////////////////
-int FizeSize( char *Fname )
+int WordCount( char Fname[] , char Word[])
 {
 	if( Fname == NULL )
 	{
@@ -71,7 +71,7 @@ int FizeSize( char *Fname )
 
 	//create file pointer 
 	FILE *fp = NULL;
-	int iSize = 0;
+	int iCnt = 0 , i = 0 , j = 0;
 
 	//Create Buffer
 	char cBuffer[BLOCKSIZE] = {'\0'};
@@ -90,13 +90,27 @@ int FizeSize( char *Fname )
 
 	while( (fgets( cBuffer , BLOCKSIZE , fp)) != NULL )
 	{
-		iSize = iSize + strlen(cBuffer);
+
+		for( i=0; cBuffer[i] != '\0'; i++)
+		{
+			j=0;
+
+			if( (Word[j] != '\0') && (cBuffer[i] == Word[j]) )
+			{
+				i++;
+				j++;
+			}
+
+			if( j == strlen(Word) )
+				iCnt++;
+		}
+
 		memset( cBuffer , 0 , BLOCKSIZE );
 	}
 
 	fclose(fp);
 
-	return iSize;
+	return iCnt;
 }
 
 /* OUTPUT :
