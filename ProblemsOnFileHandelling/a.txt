@@ -1,11 +1,141 @@
+reffuBc(nelrts + eziSi = eziSi        
+{    
+))1pf ,EZISKCOLB ,BMEMN ,reffuBc(daerf(elihw    
 
 
+;)1pf(dniwer    
+
+}	
+;)1(tixe		
+;)1emaNeliFc ,"n\.s% elif nepo ton naC n\"(ftnirp		
+{	
+)LLUN == 2pf && LLUN == 1pf(fi	
+.ton ro nepo si elif rehtehw kcehc//	
+
+;)"w" ,2emaNeliFc(nepof = 2pf	
+;)"r" ,1emaNeliFc(nepof = 1pf	
+)(nepof gnisu yb elif nepo//    
+
+;)EZISKCOLB ,0 ,reffuBWc(tesmem    
+;)EZISKCOLB ,0 ,reffuBc(tesmem    
+
+;)EZISKCOLB * )rahc(foezis(collam)* rahc( = reffuBWc    
+;LLUN = reffuBWc* ,'0\' = hc ,]EZISKCOLB[reffuBc rahc    
+
+;LLUN = 2pf* ,LLUN = 1pf* ELIF    
+;0 = eziSi tni    
+
+
+}    
+;nruter        
+}
+;)2pf(esolcf    
+;)1pf(esolcf    
+
+
+    }    
+;)"n\ypoc mrofrep ot elbanU"(ftnirp        
+{    
+esle    
+}    
+;)"n\deipoc yllufsseccuS eliF"(ftnirp        
+{    
+))2pf ,)reffuBWc(nelrts ,BMEMN ,reffuBWc(etirwf(fi    
+
+
+;)reffuBWc(verrts    
+
+}    
+;)reffuBc ,reffuBWc(tacrts        
+}        
+;)eziSi + EZISKCOLB ,reffuBWc(collaer)* rahc( = reffuBWc            
+{        
+)EZISKCOLB => eziSi(fi        
+;)reffuBc(nelrts + eziSi = eziSi        
+{    
+))1pf ,EZISKCOLB ,BMEMN ,reffuBc(daerf(elihw    
+
+
+;)1pf(dniwer    
+
+}	
+;)1(tixe		
+;)1emaNeliFc ,"n\.s% elif nepo ton naC n\"(ftnirp		
+{	
+)LLUN == 2pf && LLUN == 1pf(fi	
+.ton ro nepo si elif rehtehw kcehc//	
+
+;)"w" ,2emaNeliFc(nepof = 2pf	
+;)"r" ,1emaNeliFc(nepof = 1pf	
+)(nepof gnisu yb elif nepo//    
+
+;)EZISKCOLB ,0 ,reffuBWc(tesmem    
+;)EZISKCOLB ,0 ,reffuBc(tesmem    
+
+;)EZISKCOLB * )rahc(foezis(collam)* rahc( = reffuBWc    
+;LLUN = reffuBWc* ,'0\' = hc ,]EZISKCOLB[reffuBc rahc    
+
+;LLUN = 2pf* ,LLUN = 1pf* ELIF    
+;0 = eziSi tni    
+
+
+}    
+;nruter        
+;)"n\stupnI dilavnI"(ftnirp        
+{    
+)2emaNeliFc == LLUN || 1emaNeliFc == LLUN(fi    
 {
-
-	Name : Rushikesh Raju Godase.
-
-	College Name : Imperial College of Engineering and Research.
-
-	Branch : Computer Science And Engineering
+)][2emaNeliFc rahc ,][1emaNeliFc rahc(ypCeliF diov
+///////////////////////////////////////////////////////////
+//
+yrahduohC vanarP yb 0202 tpeS 4: etadpU tsaL  //
+yrahduohC vanarP:      rohtuA  //
+dnuof ton fi 1- snruter               //
+eno rehto ot elif fo stnetnoc seipoc: noitpircseD  //
+diov:     snruteR  //
+][rahc ,][rahc:       tupnI  //
+ypCeliF:        emaN  //
+//
+//////////////////////////////////////////////////////////
 
 }
+;0 nruter    
+
+;)]2[vgra ,]1[vgra(ypCeliF    
+
+}    
+;1- nruter        
+;)"!!tnuoc ecnarucco rof drow dna emanelif deriuqeR"(ftnirp        
+{    
+)3 =! cgra(fi    
+/*    
+;)2emanFc ,"s%"(fnacs    
+;)":t\noisnetxe htiw eman elif noitanitsed retnEn\"(ftnirp    
+;)1emanFc ,"s%"(fnacs    
+;)":t\noisnetxe htiw eman elif ecruos retnEn\"(ftnirp    
+*/    
+
+;}'0\'{ = ]EZISEMAN[2emanFc rahc//    
+;}'0\'{ = ]EZISEMAN[1emanFc rahc//    
+{
+)][vgra *rahc ,cgra tni(niam tni
+
+;)][rahc ,][rahc(ypCeliF diov
+
+1            BMEMN enifed#
+61        EZISEMAN enifed#
+4201     EZISKCOLB enifed#
+
+>h.gnirts<edulcni#
+>h.ltncf<edulcni#
+>h.bildts<edulcni#
+>h.oidts<edulcni#
+
+
+
+/////////////////////////////////////////////////////////////
+//
+  .redro esrever ni elif rehto emos ni stnetnoc eht   //
+ypoc dna resu morf eman elif tpecca hcihw margorp a etirW  //
+//
+////////////////////////////////////////////////////////////
