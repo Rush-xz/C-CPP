@@ -1,1 +1,11 @@
-Life is beautiful. Rushikesh Raju Godase.Hello World
+
+
+{
+
+	Name : Rushikesh Raju Godase.
+
+	College Name : Imperial College of Engineering and Research.
+
+	Branch : Computer Science And Engineering
+
+}

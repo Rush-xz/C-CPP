@@ -1,7 +1,8 @@
 /////////////////////////////////////////////////////////////
 //
-//	Write a program which accept file name from user and print
-//	 number of occurrence of Particular cWord in that file.	
+//	Write a program which accept file name from user and accept
+//	 word from user and print number of occurrence of that word
+//	 in that file also print offset at which that word occur.	
 //
 /////////////////////////////////////////////////////////////
 
@@ -31,7 +32,7 @@ int main( char  argc , char *argv[] ) //Enter file name by cmd line argu.
 
 	if( argc != 3)
 	{
-		printf("File name and cWord is required.\n");
+		printf("File name and Word is required.\n");
 		return 0;
 	}
 
@@ -39,11 +40,11 @@ int main( char  argc , char *argv[] ) //Enter file name by cmd line argu.
 
 	if( iRet != -1 || iRet != 0)
 	{
-		printf("Count of Word [%s] in a File %s is :%d.\n",argv[2],argv[1],iRet);
+		printf("\nCount of Word [%s] in a File %s is :%d.\n",argv[2],argv[1],iRet);
 	}
 	else 
 	{
-		printf("Entered Word is not found.\n");
+		printf("\nEntered Word is not found.\n");
 	}
 
 	return 0;
@@ -55,7 +56,7 @@ int main( char  argc , char *argv[] ) //Enter file name by cmd line argu.
 //  Name        :WordCount
 //  Input       :char [] , char []
 //  Returns     :int
-//  Description :Compute particular cWord count using 
+//  Description :Compute particular Word count using 
 //					library functions.
 //  Author      :Rushikesh Godase
 //  Date        :5 Sep 2020
@@ -71,7 +72,8 @@ int WordCount( char Fname[] , char cWord[])
 
 	//create file pointer 
 	FILE *fp = NULL;
-	int iCnt = 0 , i = 0 , j = 0;
+	int iCnt = 0 , i = 0 , j = 0 ;
+	int iOffset = 0 , iNo = 0;
 
 	//Create Buffer
 	char cBuffer[BLOCKSIZE] = {'\0'};
@@ -88,29 +90,42 @@ int WordCount( char Fname[] , char cWord[])
 		exit(1);
 	}	
 
+	printf("Offsets of word[%s]  :",cWord);
 	while( (fgets( cBuffer , BLOCKSIZE , fp)) != NULL )
 	{
 
 		for( i=0; cBuffer[i] != '\0'; i++)
 		{
 			j=0;
+			iNo++;
 
 			while( (cWord[j] != '\0') && (cBuffer[i] == cWord[j]) )
 			{
+
+				if(j==0)
+				{
+					iOffset = iNo;  //assign Offset value
+				}
+
 				i++;
 				j++;
+				iNo++;
+
 			}
 
 			if( j == strlen(cWord) )
 			{
 				iCnt++;
+				printf("%5d",iOffset);
 			}
 
 		}
 
+		/*Cleans the buffer*/
 		memset( cBuffer , 0 , BLOCKSIZE );
 	}
 
+	/*closing a file*/
 	fclose(fp);
 
 	return iCnt;
@@ -118,10 +133,7 @@ int WordCount( char Fname[] , char cWord[])
 
 /* OUTPUT :
 
-Count of Word [include] in a File CountWordOccurLib.c is :3.
-
-Count of Word [if] in a File CountWordOccurLib.c is :5.
-
-Count of Word [int] in a File CountWordOccurLib.c is :14.
+Offsets of word[include]  :  330  348  366
+Count of Word [include] in a File CountWordDisplayOffset.c is :3.
 
 */
