@@ -71,15 +71,15 @@ BOOL FileCompare(char cFileName1[], char cFileName2[])
     char ch1 = '\0' , ch2 = '\0';
 
     //open file by using fopen()
-    fp1 = fopen(cFileName1, "r");
-    fp2 = fopen(cFileName2, "r");
+	fp1 = fopen(cFileName1, "r");
+	fp2 = fopen(cFileName2, "r");
 
-    //check whether file is open or not.
-    if(fp1 == NULL && fp2 == NULL)
-    {
-        printf("\n Can not open file %s.\n", cFileName1);
+	//check whether file is open or not.
+	if(fp1 == NULL && fp2 == NULL)
+	{
+		printf("\n Can not open file %s.\n", cFileName1);
         return FALSE;
-    }
+	}
 
     rewind(fp1);
     rewind(fp2);
