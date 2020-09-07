@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////
 //
-//  Write a program which accept file name from user and copy
-//   the contents in some other file in reverse order.  
+//  Write a program which accepts two file names from user and copy
+//  contents of one file at the end of second file by using library functions.  
 //
 /////////////////////////////////////////////////////////////
 
@@ -17,7 +17,7 @@
 #define NMEMB            1  /*Number of elements each one with 
                              size of size bytes*/
 
-void FileCpy(char[], char[]);
+void FileAppend(char[], char[]);
 
 int main(int argc, char* argv[])
 {
@@ -36,23 +36,22 @@ int main(int argc, char* argv[])
         return -1;
     }
 
-    FileCpy(argv[1], argv[2]);
+    FileAppend(argv[1], argv[2]);
 
     return 0;
 }
 
 //////////////////////////////////////////////////////////
 //
-//  Name        :FileCpy
+//  Name        :FileAppend
 //  Input       :char[], char[]
 //  Returns     :void
-//  Description :copies contents of file to other one
-//               returns -1 if not found
+//  Description :Append the content of one file into other
 //  Author      :Rushikesh Godase
 //  Last Update :6 Sept 2020
 //
 ///////////////////////////////////////////////////////////
-void FileCpy(char cFileName1[], char cFileName2[])
+void FileAppend(char cFileName1[], char cFileName2[])
 {
     if(NULL == cFileName1 || NULL == cFileName2)
     {
@@ -72,7 +71,7 @@ void FileCpy(char cFileName1[], char cFileName2[])
 
     //open file by using fopen()
 	fp1 = fopen(cFileName1, "r");
-	fp2 = fopen(cFileName2, "w");
+	fp2 = fopen(cFileName2, "a");
 
 	//check whether file is open or not.
 	if(fp1 == NULL && fp2 == NULL)
@@ -99,9 +98,6 @@ void FileCpy(char cFileName1[], char cFileName2[])
 
         memset( cBuffer , 0 , sizeof(cBuffer));
     }
-
-    strrev(cWBuffer);//Reverse the content in cWBuffer
-
 
     /* writing the cont. into 2nd file */
     if(fwrite(cWBuffer, NMEMB, strlen(cWBuffer), fp2))

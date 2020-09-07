@@ -8,6 +8,7 @@
 //Header
 #include<stdio.h>
 #include<fcntl.h>
+#include<string.h>
 #include<stdlib.h>
 #define NAMESIZE 20
 #define BLOCKSIZE 1024
@@ -71,9 +72,15 @@ int WordCount( char Fname[] , char cWord[])
 
 	//create file pointer 
 	FILE *fp = NULL;
-	int iCnt = 0 , i = 0 , j = 0 ;
-	char Temp = '\0';
-	int k = 0;
+	int iCnt = 0 , i = 0 , j = 0;
+	/*char Temp = '\0';
+	int k = 0 ;*/	
+	int iNo = 0 , iOffset = 0;
+	char Wd[strlen(cWord)];
+
+	strcpy(Wd,cWord);
+
+	strrev( Wd);
 
 	//Create Buffer
 	char cBuffer[BLOCKSIZE] = {'\0'};
@@ -90,16 +97,20 @@ int WordCount( char Fname[] , char cWord[])
 		exit(1);
 	}	
 
-	printf("Offsets of word[%s]  :",cWord);
 	while( (fgets( cBuffer , BLOCKSIZE , fp)) != NULL )
 	{
 
 		for( i=0; cBuffer[i] != '\0'; i++)
 		{
 			j=0;
+			iNo++;
 
 			while( (cWord[j] != '\0') && (cBuffer[i] == cWord[j]) )
 			{
+				if( j == 0)
+				{
+					iOffset = iNo;
+				}
 
 				i++;
 				j++;
@@ -109,21 +120,8 @@ int WordCount( char Fname[] , char cWord[])
 			if( j == strlen(cWord) )
 			{
 				iCnt++;
-				/*k = --i;
-				j = 0;
 
-				while(j<i)
-				{
-					Temp = cWord[j];
-					cWord[j] = cBuffer[k];
-					cBuffer[k] = Temp;
-
-					j++;
-					--k;
-				}
-
-				i++;
-				j=0;*/
+				fputs( Wd , ftell(fp));
 
 			}
 

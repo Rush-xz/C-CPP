@@ -1,141 +1,124 @@
-reffuBc(nelrts + eziSi = eziSi        
-{    
-))1pf ,EZISKCOLB ,BMEMN ,reffuBc(daerf(elihw    
 
-
-;)1pf(dniwer    
-
-}	
-;)1(tixe		
-;)1emaNeliFc ,"n\.s% elif nepo ton naC n\"(ftnirp		
-{	
-)LLUN == 2pf && LLUN == 1pf(fi	
-.ton ro nepo si elif rehtehw kcehc//	
-
-;)"w" ,2emaNeliFc(nepof = 2pf	
-;)"r" ,1emaNeliFc(nepof = 1pf	
-)(nepof gnisu yb elif nepo//    
-
-;)EZISKCOLB ,0 ,reffuBWc(tesmem    
-;)EZISKCOLB ,0 ,reffuBc(tesmem    
-
-;)EZISKCOLB * )rahc(foezis(collam)* rahc( = reffuBWc    
-;LLUN = reffuBWc* ,'0\' = hc ,]EZISKCOLB[reffuBc rahc    
-
-;LLUN = 2pf* ,LLUN = 1pf* ELIF    
-;0 = eziSi tni    
-
-
-}    
-;nruter        
-}
-;)2pf(esolcf    
-;)1pf(esolcf    
-
-
-    }    
-;)"n\ypoc mrofrep ot elbanU"(ftnirp        
-{    
-esle    
-}    
-;)"n\deipoc yllufsseccuS eliF"(ftnirp        
-{    
-))2pf ,)reffuBWc(nelrts ,BMEMN ,reffuBWc(etirwf(fi    
-
-
-;)reffuBWc(verrts    
-
-}    
-;)reffuBc ,reffuBWc(tacrts        
-}        
-;)eziSi + EZISKCOLB ,reffuBWc(collaer)* rahc( = reffuBWc            
-{        
-)EZISKCOLB => eziSi(fi        
-;)reffuBc(nelrts + eziSi = eziSi        
-{    
-))1pf ,EZISKCOLB ,BMEMN ,reffuBc(daerf(elihw    
-
-
-;)1pf(dniwer    
-
-}	
-;)1(tixe		
-;)1emaNeliFc ,"n\.s% elif nepo ton naC n\"(ftnirp		
-{	
-)LLUN == 2pf && LLUN == 1pf(fi	
-.ton ro nepo si elif rehtehw kcehc//	
-
-;)"w" ,2emaNeliFc(nepof = 2pf	
-;)"r" ,1emaNeliFc(nepof = 1pf	
-)(nepof gnisu yb elif nepo//    
-
-;)EZISKCOLB ,0 ,reffuBWc(tesmem    
-;)EZISKCOLB ,0 ,reffuBc(tesmem    
-
-;)EZISKCOLB * )rahc(foezis(collam)* rahc( = reffuBWc    
-;LLUN = reffuBWc* ,'0\' = hc ,]EZISKCOLB[reffuBc rahc    
-
-;LLUN = 2pf* ,LLUN = 1pf* ELIF    
-;0 = eziSi tni    
-
-
-}    
-;nruter        
-;)"n\stupnI dilavnI"(ftnirp        
-{    
-)2emaNeliFc == LLUN || 1emaNeliFc == LLUN(fi    
 {
-)][2emaNeliFc rahc ,][1emaNeliFc rahc(ypCeliF diov
-///////////////////////////////////////////////////////////
+	
+	Name : Rushikesh Raju  Godase
+
+	College : Imperial College of engineering and research
+
+	Computer Science and engineering
+}////////////////////////////////////////////////////////////
 //
-yrahduohC vanarP yb 0202 tpeS 4: etadpU tsaL  //
-yrahduohC vanarP:      rohtuA  //
-dnuof ton fi 1- snruter               //
-eno rehto ot elif fo stnetnoc seipoc: noitpircseD  //
-diov:     snruteR  //
-][rahc ,][rahc:       tupnI  //
-ypCeliF:        emaN  //
+//  Write a program which accepts two file names from user and copy
+//  contents of one file at the end of second file by using library functions.  
 //
-//////////////////////////////////////////////////////////
-
-}
-;0 nruter    
-
-;)]2[vgra ,]1[vgra(ypCeliF    
-
-}    
-;1- nruter        
-;)"!!tnuoc ecnarucco rof drow dna emanelif deriuqeR"(ftnirp        
-{    
-)3 =! cgra(fi    
-/*    
-;)2emanFc ,"s%"(fnacs    
-;)":t\noisnetxe htiw eman elif noitanitsed retnEn\"(ftnirp    
-;)1emanFc ,"s%"(fnacs    
-;)":t\noisnetxe htiw eman elif ecruos retnEn\"(ftnirp    
-*/    
-
-;}'0\'{ = ]EZISEMAN[2emanFc rahc//    
-;}'0\'{ = ]EZISEMAN[1emanFc rahc//    
-{
-)][vgra *rahc ,cgra tni(niam tni
-
-;)][rahc ,][rahc(ypCeliF diov
-
-1            BMEMN enifed#
-61        EZISEMAN enifed#
-4201     EZISKCOLB enifed#
-
->h.gnirts<edulcni#
->h.ltncf<edulcni#
->h.bildts<edulcni#
->h.oidts<edulcni#
-
-
-
 /////////////////////////////////////////////////////////////
+
+
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<fcntl.h>
+#include<string.h>
+
+#define BLOCKSIZE     1024
+#define NAMESIZE        16
+#define NMEMB            1  /*Number of elements each one with 
+                             size of size bytes*/
+
+void FileCpy(char[], char[]);
+
+int main(int argc, char* argv[])
+{
+    //char cFname1[NAMESIZE] = {'\0'};
+    //char cFname2[NAMESIZE] = {'\0'};
+
+    /*
+    printf("\nEnter source file name with extension\t:");
+    scanf("%s", cFname1);
+    printf("\nEnter destination file name with extension\t:");
+    scanf("%s", cFname2);
+    */
+    if(argc != 3)
+    {
+        printf("Required filename and word for occurance count!!");
+        return -1;
+    }
+
+    FileCpy(argv[1], argv[2]);
+
+    return 0;
+}
+
+//////////////////////////////////////////////////////////
 //
-  .redro esrever ni elif rehto emos ni stnetnoc eht   //
-ypoc dna resu morf eman elif tpecca hcihw margorp a etirW  //
+//  Name        :FileCpy
+//  Input       :char[], char[]
+//  Returns     :void
+//  Description :copies contents of file to other one
+//               returns -1 if not found
+//  Author      :Rushikesh Godase
+//  Last Update :6 Sept 2020
 //
-////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////
+void FileCpy(char cFileName1[], char cFileName2[])
+{
+    if(NULL == cFileName1 || NULL == cFileName2)
+    {
+        printf("Invalid Inputs\n");
+        return;
+    }
+
+
+    int iSize = 0;
+    FILE *fp1 = NULL, *fp2 = NULL;
+
+    char cBuffer[BLOCKSIZE], ch = '\0', *cWBuffer = NULL;
+    cWBuffer = (char *)malloc(sizeof(char) * BLOCKSIZE);
+
+    memset(cBuffer, 0, BLOCKSIZE);
+    memset(cWBuffer, 0, BLOCKSIZE);
+
+    //open file by using fopen()
+	fp1 = fopen(cFileName1, "r");
+	fp2 = fopen(cFileName2, "a");
+
+	//check whether file is open or not.
+	if(fp1 == NULL && fp2 == NULL)
+	{
+		printf("\n Can not open file %s.\n", cFileName1);
+		exit(1);
+	}
+
+    //rewind(fp1);//sets File position to the beggining of file
+
+
+    while(fread(cBuffer, NMEMB, BLOCKSIZE, fp1))
+    {
+        iSize = iSize + strlen(cBuffer);
+
+
+        /*increase the size of cWBuffer if required*/
+        if(iSize >= BLOCKSIZE)  
+        {                         
+            cWBuffer = (char *)realloc(cWBuffer, BLOCKSIZE + iSize);
+        }
+
+        strcat(cWBuffer, cBuffer); //Concat the cont. of cBuffer into cWBuffer
+
+        memset( cBuffer , 0 , sizeof(cBuffer));
+    }
+
+    /* writing the cont. into 2nd file */
+    if(fwrite(cWBuffer, NMEMB, strlen(cWBuffer), fp2))
+    {
+        printf("File Successfully copied\n");
+    }
+    else
+    {
+        printf("Unable to perform copy\n");
+    }    
+
+
+    fclose(fp1);
+    fclose(fp2);
+}

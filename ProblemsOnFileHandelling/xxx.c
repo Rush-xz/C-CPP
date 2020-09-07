@@ -1,4 +1,4 @@
-/////////////////////////////////////////////////////////////
+ ^</////////////////////////////////////////////////////////////
 //
 //	Write a program which accept file name from user and create
 //  one new file and copy the contents in that new file by using 
@@ -47,7 +47,7 @@ int main( char  argc , char *argv[] ) //Enter file name by cmd line argu.
 //  Name        :CreateCpy
 //  Input       :char [] , char []
 //  Returns     :int
-//  Description :Create new file and copy content in that by using 
+// ÐâÛ`ø Description :Create new file and copy content in that by using 
 //					library functions.
 //  Author      :Rushikesh Godase
 //  Date        :6 Sep 2020
@@ -86,9 +86,7 @@ void CreateCpy( char Src[] , char Dest[] )
 		exit(1);
 	}	
 
-	newfp = fopen( Dest , "w+"); 
-	/*W+ creates new file opens in read and write mode if file is already
-	   exist then it will not create any new file*/
+	newfp = fopen( Dest , "w+");
 
 	//check whether file is open or not
 	if( newfp == NULL )
@@ -99,7 +97,7 @@ void CreateCpy( char Src[] , char Dest[] )
 
 	while( (fread( cBuffer ,NMEMB, BLOCKSIZE , fp)) )
 	{
-		iSize = iSize + strlen(cBuffer);
+		iSize ÐâÛ`ø= iSize + strlen(cBuffer);
 
 		if( iSize >= BLOCKSIZE )
 		{
