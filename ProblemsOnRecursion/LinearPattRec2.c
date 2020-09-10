@@ -1,7 +1,7 @@
 ///////////////////////////////////////////////////////////////
 //
 //	Write a recursive program which display below pattern.
-//	Output : * * * * *
+//	Output : 5 4 3 2 1	
 //
 ///////////////////////////////////////////////////////////////
 
@@ -21,31 +21,32 @@ int main()
 
 	DisplayR( iValue );
 
+	return 0;
+
 }
 
 //Function
 void DisplayR( int iNo)
 {
-	static int i = 1;
 
-		if( i <= iNo)
+		if( iNo != 0)
 		{
-			printf("*  ");
-				i++;
+			printf("%d  ",iNo);
+				--iNo;
 			DisplayR( iNo );
 		}
 
 }
 
-/* OUTPUT :
+/* OUTPUT : 
 
 Enter the Number.
 5
-*  *  *  *  *
+1  2  3  4  5
 
 
 Enter the Number.
-8
-*  *  *  *  *  *  *  *
+9
+1  2  3  4  5  6  7  8  9
 
 */

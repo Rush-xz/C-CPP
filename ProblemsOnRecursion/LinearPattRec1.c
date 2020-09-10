@@ -21,6 +21,8 @@
 
 		DisplayR( iValue );
 
+		return 0;
+
 	}
 
 	//Function
