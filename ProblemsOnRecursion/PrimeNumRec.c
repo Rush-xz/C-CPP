@@ -33,7 +33,7 @@ int main()
 //Function
 void PrimeNumR( int Start , int End)
 {
-	int i = 1;
+	int i = 2;
 
 	if( Start < 0)		//Updater
 	{
@@ -48,8 +48,16 @@ void PrimeNumR( int Start , int End)
 
 		if( Start <= End )
 		{
-			while( Start)
-			
+			while( i<Start)
+			{
+				if( Start % i == 0)
+					break;
+				++i;
+			}
+
+			if( i == Start)
+				printf("%d ",Start);
+
 			Start++;
 			PrimeNumR( Start , End );
 		}
@@ -58,7 +66,15 @@ void PrimeNumR( int Start , int End)
 
 /* OUTPUT : 
 
-Enter the Number   :50
-  1  3  5  7  9 11 13 15 17 19 21 23 25 27 29 31 33 35 37 39 41 43 45 47 49
+Enter the Range.
+Enter the Starting Number   :15
+Enter the Starting Number   :25
+17 19 23
+
+Enter the Range.
+Enter the Starting Number   :1
+Enter the Starting Number   :100
+2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97
+
 
 */
