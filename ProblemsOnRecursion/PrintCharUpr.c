@@ -25,7 +25,16 @@ int main()
 
 }
 
-//Function
+////////////////////////////////////////////////////////////
+//
+//  Name        :DisplayR
+//  Input       :int
+//  Returns     :int
+//  Description :Display Capital letters using recursion
+//  Author      :Rushikesh Godase
+//  Date        :9 Sep 2020
+//
+////////////////////////////////////////////////////////////
 void DisplayR( int iNo)
 {
 	static char  ch = 'A';

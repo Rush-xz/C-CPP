@@ -29,7 +29,16 @@ int main()
 
 }
 
-//Function
+////////////////////////////////////////////////////////////
+//
+//  Name        :ReverseNumR
+//  Input       :int
+//  Returns     :int
+//  Description :Reverse number by using recursion
+//  Author      :Rushikesh Godase
+//  Date        :9 Sep 2020
+//
+////////////////////////////////////////////////////////////
 int ReverseNumR( int iNo)
 {
 	static int iDigit = 0;

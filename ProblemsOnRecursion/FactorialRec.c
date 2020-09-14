@@ -29,7 +29,16 @@ int main()
 
 }
 
-//Function
+////////////////////////////////////////////////////////////
+//
+//  Name        :FactorialR
+//  Input       :int
+//  Returns     :int
+//  Description :computes Factorial of given number using recursion
+//  Author      :Rushikesh Godase
+//  Date        :9 Sep 2020
+//
+////////////////////////////////////////////////////////////
 int FactorialR( int iNo)
 {
 	static int iFact = 1;

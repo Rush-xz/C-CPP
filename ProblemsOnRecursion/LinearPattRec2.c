@@ -25,7 +25,16 @@ int main()
 
 }
 
-//Function
+	////////////////////////////////////////////////////////////
+	//
+	//  Name        :DisplayR
+	//  Input       :int
+	//  Returns     :void
+	//  Description :Display pattern using recursion
+	//  Author      :Rushikesh Godase
+	//  Date        :9 Sep 2020
+	//
+	////////////////////////////////////////////////////////////
 void DisplayR( int iNo)
 {
 

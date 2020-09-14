@@ -29,7 +29,16 @@ int main()
 
 }
 
-//Function
+////////////////////////////////////////////////////////////
+//
+//  Name        :Maximum
+//  Input       :int
+//  Returns     :int
+//  Description :Comptes largest digit from number using recursion
+//  Author      :Rushikesh Godase
+//  Date        :9 Sep 2020
+//
+////////////////////////////////////////////////////////////
 int Maximum( int iNo)
 {
 	static int iMax = 0;

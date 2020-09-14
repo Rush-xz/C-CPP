@@ -12,45 +12,81 @@
 #include<stdio.h>
 
 //Prototype
-int Pattern( int );
+void PatternRow( int );
+void PatternCol( int , int);
 
 //Driver Function
 int main()
 {
 	int iValue = 0;
 
-	printf("Enter the Number of Rows   :");
+	printf("Enter the Number   :");
 	scanf("%d",&iValue);
 
-	Pattern( iValue );
+	PatternRow( iValue );
 
 	return 0;
 
 }
 
-//Function
-int Pattern( int iRow)
+////////////////////////////////////////////////////////////
+//
+//  Name        :PatternRow
+//  Input       :int
+//  Returns     :void
+//  Description :Display Pattern on console
+//  Author      :Rushikesh Godase
+//  Date        :9 Sep 2020
+//
+////////////////////////////////////////////////////////////
+void PatternRow( int iNo )
 {
-	int i = 0;
-	static int k = 1;
-	static int j = 1;
-
-	if( iRow < 0)		//Updater
+	static int iRow = 1 ,iCol = 1;
+	
+	if( iRow <= iNo)
 	{
-		iRow = -iRow;
-	}
+		iCol = 1;
 
-		if( j<=iRow)
-		{
-			for( i=1; i<=iRow; ++i , ++k)
-				printf("%d   ",k);
-			printf("\n");
-			
-			j++;			
-			Pattern( iRow );
-		}
+		PatternCol( iCol , iNo);
+
+		printf("\n");
+
+		iRow++;
+
+		PatternRow(iNo);
+
+	} 
 
 }
+
+
+
+////////////////////////////////////////////////////////////
+//
+//  Name        :PatternCol
+//  Input       :int
+//  Returns     :void
+//  Description :Display Pattern on console using recursion
+//					helper function for PatternRow
+//  Author      :Rushikesh Godase
+//  Date        :9 Sep 2020
+//
+////////////////////////////////////////////////////////////
+void PatternCol( int iCol , int iNo)
+{
+	static int iCnt = 1;
+
+	if( iCol <= iNo)
+	{
+		printf("%d  ",iCnt);
+
+		iCol++;
+		iCnt++;
+
+		PatternCol( iCol , iNo);
+	}
+}
+
 
 /* OUTPUT : 
 

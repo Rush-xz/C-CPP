@@ -29,7 +29,16 @@ int main()
 
 }
 
-//Function
+////////////////////////////////////////////////////////////
+//
+//  Name        :Minimum
+//  Input       :int
+//  Returns     :int
+//  Description :computes smallest digit from given number using recursion
+//  Author      :Rushikesh Godase
+//  Date        :9 Sep 2020
+//
+////////////////////////////////////////////////////////////
 int Minimum( int iNo)
 {
 	static int iMin = 9;

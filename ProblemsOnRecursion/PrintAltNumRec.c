@@ -26,7 +26,17 @@ int main()
 
 }
 
-//Function
+
+////////////////////////////////////////////////////////////
+//
+//  Name        :AlternateR
+//  Input       :int
+//  Returns     :int
+//  Description :Print Alternate numbers
+//  Author      :Rushikesh Godase
+//  Date        :9 Sep 2020
+//
+////////////////////////////////////////////////////////////
 int AlternateR( int iNo)
 {
 	static int i = 1;

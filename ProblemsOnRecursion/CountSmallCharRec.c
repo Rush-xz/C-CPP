@@ -30,7 +30,16 @@ int main()
 
 }
 
-//Function
+////////////////////////////////////////////////////////////
+//
+//  Name        :CountSmallR
+//  Input       :char *
+//  Returns     :int 
+//  Description :Count small alphabet from string
+//  Author      :Rushikesh Godase
+//  Date        :9 Sep 2020
+//
+////////////////////////////////////////////////////////////
 int CountSmallR( char *str )
 {
 	static int iCnt = 0;

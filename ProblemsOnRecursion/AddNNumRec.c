@@ -35,7 +35,16 @@ int main()
 
 }
 
-//Function
+////////////////////////////////////////////////////////////
+//
+//  Name        :Addition
+//  Input       :int * , int
+//  Returns     :int
+//  Description :Computers addition of 'N' numbers
+//  Author      :Rushikesh Godase
+//  Date        :9 Sep 2020
+//
+////////////////////////////////////////////////////////////
 int Addition( int *Arr , int iNo)
 {
 	static int iSum = 0;

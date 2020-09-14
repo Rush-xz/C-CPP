@@ -30,7 +30,16 @@ int main()
 
 }
 
-//Function
+////////////////////////////////////////////////////////////
+//
+//  Name        :CountWhiteSpaces
+//  Input       :char *
+//  Returns     :void
+//  Description :Count white spaces from string.
+//  Author      :Rushikesh Godase
+//  Date        :9 Sep 2020
+//
+////////////////////////////////////////////////////////////
 int CountWhiteSpaces( char *str )
 {
 	static int iCnt = 0;

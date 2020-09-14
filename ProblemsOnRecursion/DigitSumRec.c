@@ -29,7 +29,16 @@ int main()
 
 }
 
-//Function
+////////////////////////////////////////////////////////////
+//
+//  Name        :DigitSumR
+//  Input       :int
+//  Returns     :int
+//  Description :computes Addition of digits from number using recursion
+//  Author      :Rushikesh Godase
+//  Date        :9 Sep 2020
+//
+////////////////////////////////////////////////////////////
 int DigitSumR( int iNo)
 {
 	static int iSum = 0;

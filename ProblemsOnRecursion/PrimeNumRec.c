@@ -48,7 +48,18 @@ void PrimeNumR( int Start , int End)
 
 		if( Start <= End )
 		{
-			while( i<Start)
+			Start++;
+			PrimeNumR( Start , End );
+		}
+
+}
+
+
+void Prime( Start )
+{
+	static int i = 1;
+
+			if( i<Start)
 			{
 				if( Start % i == 0)
 					break;
@@ -57,10 +68,6 @@ void PrimeNumR( int Start , int End)
 
 			if( i == Start)
 				printf("%d ",Start);
-
-			Start++;
-			PrimeNumR( Start , End );
-		}
 
 }
 

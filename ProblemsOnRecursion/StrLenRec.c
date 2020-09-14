@@ -30,7 +30,16 @@ int main()
 
 }
 
-//Function
+////////////////////////////////////////////////////////////
+//
+//  Name        :StrlenR
+//  Input       :char *
+//  Returns     :int
+//  Description :computes string length by using recursion
+//  Author      :Rushikesh Godase
+//  Date        :9 Sep 2020
+//
+////////////////////////////////////////////////////////////
 int StrlenR( char *str )
 {
 	static int iLen = 0;

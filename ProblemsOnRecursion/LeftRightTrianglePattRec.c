@@ -12,56 +12,89 @@
 #include<stdio.h>
 
 //Prototype
-int Pattern( int );
+void PatternRow( int );
+void PatternCol( int , int);
 
 //Driver Function
 int main()
 {
 	int iValue = 0;
 
-	printf("Enter the Number of Rows   :");
+	printf("Enter the Number   :");
 	scanf("%d",&iValue);
 
-	Pattern( iValue );
+	PatternRow( iValue );
 
 	return 0;
 
 }
 
-//Function
-int Pattern( int iRow)
+
+////////////////////////////////////////////////////////////
+//
+//  Name        :PatternRow
+//  Input       :int
+//  Returns     :void
+//  Description :Display Pattern on console
+//  Author      :Rushikesh Godase
+//  Date        :9 Sep 2020
+//
+////////////////////////////////////////////////////////////
+void PatternRow( int iNo )
 {
-	int i = 0;
-	static int j = 0;
-
-	if( iRow < 0)		//Updater
+	static int iRow = 1 ,iCol = 1;
+	
+	if( iRow <= iNo)
 	{
-		iRow = -iRow;
+		iCol = 1;
+
+		PatternCol( iCol , iRow);
+
+		printf("\n");
+
+		iRow++;
+
+		PatternRow(iNo);
+
+	} 
+
+}
+
+
+
+////////////////////////////////////////////////////////////
+//
+//  Name        :PatternCol
+//  Input       :int
+//  Returns     :void
+//  Description :Display Pattern on console using recursion
+//					helper function for PatternRow
+//  Author      :Rushikesh Godase
+//  Date        :9 Sep 2020
+//
+////////////////////////////////////////////////////////////
+void PatternCol( int iCol , int iRow)
+{
+	if( iCol <= iRow)
+	{
+		printf("*  ");
+
+		iCol++;
+
+		PatternCol( iCol , iRow);
 	}
-
-		if( iRow != 0)
-		{
-			++j;
-			for( i=1; i<=j; ++i)
-				printf("*  ");
-			printf("\n");
-			
-			--iRow;			
-			Pattern( iRow );
-		}
-
 }
 
 /* OUTPUT : 
 
-Enter the Number of Rows   :5
+Enter the Number   :5
 *
 *  *
 *  *  *
 *  *  *  *
 *  *  *  *  *
 
-Enter the Number of Rows   :6
+Enter the Number   :6
 *
 *  *
 *  *  *
@@ -69,7 +102,7 @@ Enter the Number of Rows   :6
 *  *  *  *  *
 *  *  *  *  *  *
 
-Enter the Number of Rows   :3
+Enter the Number   :3
 *
 *  *
 *  *  *
