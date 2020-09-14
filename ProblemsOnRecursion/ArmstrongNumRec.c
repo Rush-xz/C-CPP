@@ -1,7 +1,9 @@
-/*
-*   Write a program which accepts number from user and check whether
-*   number is Armstrong number or not in recursive manner
-*/
+///////////////////////////////////////////////////////////
+//
+//  Write a program which accepts number from user and check whether
+//  number is Armstrong number or not in recursive manner
+//
+///////////////////////////////////////////////////////////
 
 #include<stdio.h>
 #define TRUE        1
