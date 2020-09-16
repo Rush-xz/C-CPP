@@ -19,9 +19,12 @@ typedef struct Node
 //Global Declaration
 void InsertFirst( PPNODE , int );
 void InsertLast( PPNODE , int );
+void InsertLastR( PPNODE , int );
+PNODE TraverseTillLast( PNODE );
 void DisplayEle(PNODE);
 void Deallocate(PPNODE);
 int  CountEle(PNODE);
+int CountEleRec(PNODE);
 int  CountFreq(PNODE , int);
 int  FirstOccurance(PNODE , int);
 int  LastOccurance(PNODE , int);
@@ -57,14 +60,14 @@ int main()
 	/*Insert Element At Last Position*/
 	printf("\n\nEnter the Element(Insert Last) 	:");
 	scanf("%d",&iNo);
-	InsertLast(&Head , iNo);
+	InsertLastR(&Head , iNo );
 
 	/*Display All Elements From SLLL*/
 	printf("\nDisplay Elements 	:\n");
 	DisplayEle(Head);
 
 	/*Count All Elements From SLLL*/
-	iRet = CountEle(Head);
+	iRet = CountEleRec(Head);
 	printf("\n\nTotal Number of Elements(Count) 	:%3d",iRet);
 
 
@@ -195,6 +198,70 @@ void InsertLast( PPNODE First , int iNo)
 
 
 
+
+////////////////////////////////////////////////////////////
+//
+//  Name        :InsertLast
+//  Input       :PPNODE , int
+//  Returns     :void
+//  Description :Insert elements At Last Position in linked list
+//					by using recursion.
+//  Author      :Rushikesh Godase
+//  Date        :31 Aug 2020
+//
+////////////////////////////////////////////////////////////
+void InsertLastR( PPNODE First , int iNo )
+{
+	PNODE newn = NULL;
+	PNODE Temp = NULL;
+
+	newn = (PNODE)malloc(sizeof(NODE));
+
+	if( NULL == newn )
+	{
+		return;
+	}
+
+	newn -> iData = iNo;
+	newn -> Next = NULL;
+
+	if( *First == NULL)
+	{
+		*First = newn;
+	}
+	else
+	{
+		Temp = *First;
+		Temp = TraverseTillLast( Temp );
+		Temp -> Next = newn;
+	}
+}//End of InsertLastR()
+
+
+////////////////////////////////////////////////////////////
+//
+//  Name        :TraverseTillLast
+//  Input       :PPNODE 
+//  Returns     :PNODE
+//  Description : Helper Function for InsertLast.
+//  Author      :Rushikesh Godase
+//  Date        :31 Aug 2020
+//
+////////////////////////////////////////////////////////////
+PNODE TraverseTillLast( PNODE First)
+{
+	static PNODE Temp = First;
+
+	if( Temp -> Next != NULL)
+	{
+		Temp = Temp -> Next;
+		TraverseTillLast( Temp );
+	}
+
+	return Temp;
+}
+
+
 ////////////////////////////////////////////////////////////
 //
 //  Name        :DisplayEle
@@ -286,6 +353,44 @@ int CountEle( PNODE First )
 	return iCnt;
 
 }//End of CountEle
+
+
+
+////////////////////////////////////////////////////////////
+//
+//  Name        :CountEleRec
+//  Input       :PNODE
+//  Returns     :int
+//  Description :Count all elements in linked list by using recursion
+//  Author      :Rushikesh Godase
+//  Date        :31 Aug 2020
+//
+////////////////////////////////////////////////////////////
+int CountEleRec( PNODE First )
+{
+	static int iCnt = 0;
+
+	if( NULL == First)
+	{
+		printf("Empty Linked List.\n");
+		return -1;
+	}
+
+	if( First != NULL)
+	{
+		++iCnt;
+
+		First = First -> Next;
+
+		CountEleRec(First);
+	}
+
+	return iCnt;
+
+}//End of CountEle
+
+
+
 
 ////////////////////////////////////////////////////////////
 //
