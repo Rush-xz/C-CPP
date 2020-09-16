@@ -64,6 +64,7 @@ class ArrSearch : public Array
 		int SearchFirst(int);
 		int LastOccur(int);
 		int SecOccur(int);
+		int SecondLastOccur(int);
 };
 
 ///////////////////////////////////////////////////////////////////
@@ -268,10 +269,57 @@ int ArrSearch :: SecOccur( int iValue)
 
 	}
 
-	if( iCnt == 2 )
-		return iPos;
-	else
+	if( iPos == -1)
 		return -1;
+	else
+		return iPos;
+
+}
+
+
+///////////////////////////////////////////////////////////////////
+//
+//  Name        :SecondLastOccur
+//  Input       :int
+//  Returns     :int
+//  Description :Computes the Second  Last occurance of element.
+//  Author      :Rushikesh Godase
+//  Date        :15 Sept 2020
+//
+///////////////////////////////////////////////////////////////////
+int ArrSearch :: SecondLastOccur( int iValue)
+{
+	int iPos1 = -1 , iPos2 = -1 ,  iCnt = 0;
+
+	if( this->Arr == NULL)
+	{
+		cout<<"\nArray is Empty";
+		return -1;
+	}
+
+	int i = 0;
+	for( i=0; i<this->Size; i++)
+	{
+		if( this->Arr[i]==iValue)
+		{
+			iPos2 = iPos1;
+			iPos1 = i;
+		}
+
+	}
+
+	if(iPos1 == -1)
+    {
+        return -1;
+    }
+    else if(iPos2 == -1)
+    {
+        return iPos1;
+    }
+    else
+    {
+        return iPos2;
+    }
 
 }
 
@@ -315,6 +363,9 @@ int main()
 	iRet = obj4.SecOccur(iValue);
 	cout<<"\nSecond Occurance of "<<iValue<<" is  :"<<iRet;
 
+	iRet = obj4.SecondLastOccur(iValue);
+	cout<<"\nSecond Last Occurance of "<<iValue<<" is  :"<<iRet;
+
 
 	return 0;
 
@@ -323,34 +374,36 @@ int main()
 /*	OUTPUT :
 
 Inside main.
-Enter the size of Array :5
+Enter the size of Array :4
 
 Inside Parameterised Constructor
-Please Enter the values :12
-56
-859
-65
-76
+Please Enter the values :46
+89
+75
+16
 
-Elements are :12        56      859     65      76
+Elements are :46        89      75      16
 
 Inside Copy Constructor
-Elements are :12        56      859     65      76
+Elements are :46        89      75      16
 
 Inside Parameterised Constructor
 Please Enter the values :12
-45
-12
-12
-45
-63
+46
+56
+46
+66
+66
 
-Elements are :12        45      12      12      45      63
+Elements are :12        46      56      46      66      66
 
-Enter the element for Frequency.45
+Enter the element for Frequency.46
 
-Frequency of 45 is  :2
-First Occurance of 45 is  :1
+Frequency of 46 is  :2
+First Occurance of 46 is  :1
+Last Occurance of 46 is  :3
+Second Occurance of 46 is  :3
+Second Last Occurance of 46 is  :1
 Inside Destructor.
 Inside Destructor.
 Inside Destructor.
