@@ -72,7 +72,7 @@ class ArrSearch : public Array
 //  Name        :Accept
 //  Input       :void
 //  Returns     :void
-//  Description :Accepts N elements from user (through constructor)
+//  Description	 :Accepts N elements from user (through constructor)
 //  Author      :Rushikesh Godase
 //  Date        :15 Sept 2020
 //
