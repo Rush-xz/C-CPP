@@ -37,7 +37,7 @@ class Array
 				this -> Arr = new int[Size];
 			}
 
-			Array( Array &ref )			//Copy Constructor:Copy m/r Contents
+			Array( Array &ref )//Copy Constructor:Copy m/r Contents
 			{
 				cout<<"\nInside Copy Constructor";
 
@@ -51,7 +51,7 @@ class Array
 				}
 			}
 
-			~Array()		//Destructor : Memory Deallocation
+			~Array()	//Destructor : Memory Deallocation
 			{
 				cout<<"\nInside Destructor.";
 				delete []Arr;
@@ -72,6 +72,8 @@ class Sorting : public Array
 		void BubbleSortX();
 		void SelectionSort();
 		void InsertionSort();
+		void QuickSort();
+		void Qsort( int , int );
 };
 
 ///////////////////////////////////////////////////////////////////
@@ -126,7 +128,7 @@ void Array :: Display()
 
 	for( int i=0; i<this->Size; i++)
 	{
-		cout<<Arr[i]<<"\t";
+		cout<<Arr[i]<<"  ";
 	}
 
 	cout<<"\n";
@@ -203,13 +205,160 @@ void Sorting :: BubbleSortX()//Optimised Code
 }
 
 
+///////////////////////////////////////////////////////////////////
+//
+//  Name        :SelectionSort
+//  Input       :void
+//  Returns     :void
+//  Description :Sorts Array elemets using selection sort[increasing order].
+//  Author      :Rushikesh Godase
+//  Date        :18 Sept 2020
+//	Best Case TC is O(N^2) & Worst Case TC is O(N^2)	
+//
+///////////////////////////////////////////////////////////////////
+void Sorting :: SelectionSort()
+{
+	int i=0 , j=0 , iMin = 0 , Temp = 0;
+
+	for( i=0; i<Size-1; i++)
+	{
+		iMin = i;
+
+		for( j=i+1; j<Size; ++j)
+		{
+			if( Arr[j] < Arr[iMin] )
+			{
+				iMin = j; 
+			}
+		}
+
+		if( i != iMin )
+			{
+				Temp = Arr[i];
+				Arr[i] = Arr[iMin];
+				Arr[iMin] = Temp;
+			}
+	}
+}
+
+
+///////////////////////////////////////////////////////////////////
+//
+//  Name        :InsertionSort
+//  Input       :void
+//  Returns     :void
+//  Description :Sorts Array elemets using insertion sort[increasing order].
+//  Author      :Rushikesh Godase
+//  Date        :18 Sept 2020
+//	Best Case TC is O(N^2) & Worst Case TC is O(N^2)	
+//
+///////////////////////////////////////////////////////////////////
+void Sorting :: InsertionSort()
+{
+
+	int i = 0 , j = 0 , key = 0;
+
+	for( i=1; i<Size; ++i)//iterate every element
+	{
+		key = Arr[i];
+		j = i-1;
+
+		//iterate the array to find out position for key
+		while( (j>=0) && (Arr[j]>key) )
+		{		
+
+			Arr[j+1] = Arr[j];
+			j--;
+
+		}
+
+		//store the selected element at desired posirion.
+		Arr[j+1] = key;
+	}
+}
+
+
+//////////////////////////////////////////////////////////////////
+//
+//  Name        :QuickSort
+//  Input       :void
+//  Returns     :void
+//  Description :Sorts elements using QuickSort() technique
+//  Author      :Rushikesh Godase
+//  Date        :18 Sept 2020
+//
+///////////////////////////////////////////////////////////////////
+void Sorting::QuickSort() /* QuickSort()(Sorting const *this) */
+{
+    if (NULL == this->Arr)
+    {
+        cout << "Array Is Empty\n";
+        return;
+    }
+    /*  Taking pivot as first element , we can take last or middle also,
+    *   slight change in logic */
+    Qsort(0, this->Size - 1);
+
+} // end of QuickSort()
+
+
+//////////////////////////////////////////////////////////////////
+//
+//  Name        :Qsort
+//  Input       :void
+//  Returns     :void
+//  Description :Sorts elements using Qsort() technique
+//  Author      :Rushikesh Godase
+//  Date        :19 Sept 2020
+//
+///////////////////////////////////////////////////////////////////
+/* Qsort()(Sorting const *this, int, int) */
+void Sorting::Qsort(int iLow, int iHigh)
+{
+    int iPivot = 0, i = 0, j = 0, iTemp = 0;
+
+    if (iLow < iHigh)
+    {
+        i = iLow;
+        j = iHigh;
+        iPivot = this->Arr[iLow];
+
+        while (i < j)
+        {
+
+            while (this->Arr[i] <= iPivot && i < iHigh)
+            {				//finds largest ele than pivot
+                i++;
+            }
+            while (this->Arr[j] > iPivot)
+            {				//finds smallest ele than pivot
+                j--;
+            }
+
+            if (i < j)
+            {
+                iTemp = this->Arr[i];
+                this->Arr[i] = this->Arr[j];
+                this->Arr[j] = iTemp;
+            }
+        }
+        iTemp = this->Arr[iLow];
+        this->Arr[iLow] = this->Arr[j];
+        this->Arr[j] = iTemp;
+
+        Qsort(iLow, j - 1);
+        Qsort(j + 1, iHigh);
+    }
+} // end of QuickSort()
+
+
 int main()
 {
 	cout<<"\nInside main.";
 
 	int iValue = 0;
 
-	cout<<"\nEnter the Number of elements  :";
+	/*cout<<"\nEnter the Number of elements  :";
 	cin>>iValue;
 
 	Sorting obj1(iValue);
@@ -218,6 +367,89 @@ int main()
 	obj1.BubbleSort();
 	obj1.Display();
 
+	cout<<"\nEnter the Number of elements  :";
+	cin>>iValue;
+
+	Sorting obj2(iValue);
+	obj2.Accept();
+	obj2.Display();
+	obj2.SelectionSort();
+	obj2.Display();
+
+	cout<<"\nEnter the Number of elements  :";
+	cin>>iValue;
+
+	Sorting obj3(iValue);
+	obj3.Accept();
+	obj3.Display();
+	obj3.InsertionSort();
+	obj3.Display();*/
+
+
+	cout<<"\nEnter the Number of elements  :";
+	cin>>iValue;
+
+	Sorting obj1(iValue);
+	obj1.Accept();
+	obj1.Display();
+	obj1.QuickSort();
+	obj1.Display();
 
 	return 0;
 }
+
+/*
+
+Inside main.
+Enter the Number of elements  :7
+
+Inside Parameterised Constructor
+Please Enter the values :
+6
+4
+1
+2
+9
+3
+5
+
+Elements are :6  4  1  2  9  3  5
+
+Inside Bubble Sort.
+Elements are :1  2  3  4  5  6  9
+
+Enter the Number of elements  :5
+
+Inside Parameterised Constructor
+Please Enter the values :
+3
+1
+7
+6
+9
+
+Elements are :3  1  7  6  9
+
+Elements are :1  3  6  7  9
+
+Enter the Number of elements  :7
+
+Inside Parameterised Constructor
+Please Enter the values :
+6
+4
+3
+8
+2
+1
+9
+
+Elements are :6  4  3  8  2  1  9
+
+Elements are :1  2  3  4  6  8  9
+
+Inside Destructor.
+Inside Destructor.
+Inside Destructor.
+
+*/
