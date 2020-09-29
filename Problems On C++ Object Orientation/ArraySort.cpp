@@ -74,6 +74,10 @@ class Sorting : public Array
 		void InsertionSort();
 		void QuickSort();
 		void Qsort( int , int );
+		void MergeSort();
+		void Merge( int , int , int );
+		void Merge_Sort( int , int );
+
 };
 
 ///////////////////////////////////////////////////////////////////
@@ -352,6 +356,114 @@ void Sorting::Qsort(int iLow, int iHigh)
 } // end of QuickSort()
 
 
+//////////////////////////////////////////////////////////////////
+//
+//  Name        :MergeSort
+//  Input       :void
+//  Returns     :void
+//  Description :Sorts elements using MergeSort() technique
+//  Author      :Rushikesh Godase
+//  Date        :19 Sept 2020
+//
+///////////////////////////////////////////////////////////////////
+/* MergeSort()(Sorting const *this) */
+void Sorting::MergeSort()
+{
+    if (this->Arr == NULL)
+    {
+        cout << "Array is Empty\n";
+        return;
+    }
+    Merge_Sort(0, this->Size - 1);
+}
+
+//////////////////////////////////////////////////////////////////
+//
+//  Name        :Merge
+//  Input       :void
+//  Returns     :void
+//  Description :Sorts elements using MergeSort() technique
+//  Author      :Rushikesh Godase
+//  Date        :19 Sept 2020
+//
+///////////////////////////////////////////////////////////////////
+/* Merge()(Sorting const *this, int, int, int) */
+void Sorting::Merge(int iLow, int iMid, int iHigh)
+{
+    int i, j, k;
+    int Size1 = iMid - iLow + 1;
+    int Size2 = iHigh - iMid;
+
+    int *L = new int[Size1], *R = new int[Size2];
+
+    for (i = 0; i < Size1; i++)
+    {
+        L[i] = this->Arr[iLow + i];
+    }
+    for (j = 0; j < Size2; j++)
+    {
+        R[j] = this->Arr[iMid + 1 + j];
+    }
+    i = 0;
+    j = 0;
+    k = iLow;
+    while (i < Size1 && j < Size2 )
+    {
+        if (L[i] <= R[j])
+        {
+            this->Arr[k] = L[i];
+            i++;
+        }
+        else
+        {
+            this->Arr[k] = R[j];
+            j++;
+        }
+        k++;
+    }
+
+    while (i < Size1)
+    {
+        this->Arr[k] = L[i];
+        i++;
+        k++;
+    }
+
+    while (j < Size2)
+    {
+        this->Arr[k] = R[j];
+        j++;
+        k++;
+    }
+
+    delete[] L;
+    delete[] R;
+}
+
+//////////////////////////////////////////////////////////////////
+//
+//  Name        :Merge_Sort
+//  Input       :void
+//  Returns     :void
+//  Description :Sorts elements using MergeSort() technique
+//  Author      :Rushikesh Godase
+//  Date        :19 Sept 2020
+//
+///////////////////////////////////////////////////////////////////
+/* Merge_Sort()(Sorting const *this, int, int) */
+void Sorting::Merge_Sort(int iLow, int iHigh)
+{
+    if (iLow < iHigh)
+    {
+        int iMid = iLow + (iHigh - iLow) / 2;
+        Merge_Sort(iLow, iMid);
+        Merge_Sort(iMid + 1, iHigh);
+        //cout << iLow << iMid << iHigh << endl;
+        Merge(iLow, iMid, iHigh);
+    }
+}
+
+
 int main()
 {
 	cout<<"\nInside main.";
@@ -383,7 +495,7 @@ int main()
 	obj3.Accept();
 	obj3.Display();
 	obj3.InsertionSort();
-	obj3.Display();*/
+	obj3.Display();
 
 
 	cout<<"\nEnter the Number of elements  :";
@@ -393,6 +505,15 @@ int main()
 	obj1.Accept();
 	obj1.Display();
 	obj1.QuickSort();
+	obj1.Display();*/
+
+	cout<<"\nEnter the Number of elements  :";
+	cin>>iValue;
+
+	Sorting obj1(iValue);
+	obj1.Accept();
+	obj1.Display();
+	obj1.MergeSort();
 	obj1.Display();
 
 	return 0;
